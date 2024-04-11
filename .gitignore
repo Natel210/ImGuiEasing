@@ -797,7 +797,7 @@ pyrightconfig.json
 # End of https://www.toptal.com/developers/gitignore/api/c++,visualstudio,visualstudiocode,csharp,python
 
 
-!SDL2.dll
-!SDL2.lib
-!SDL2main.lib
-!SDL2test.lib
+!./ImGuiEasing/Library/SDL2/lib/x64/SDL2.dll
+!./ImGuiEasing/Library/SDL2/lib/x64/SDL2.lib
+!./ImGuiEasing/Library/SDL2/lib/x64/SDL2main.lib
+!./ImGuiEasing/Library/SDL2/lib/x64/SDL2test.lib
