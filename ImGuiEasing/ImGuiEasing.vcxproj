@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{74d635ff-1658-4c01-94ec-a792e22ac0d5}</ProjectGuid>
+    <RootNamespace>ImGuiEasing</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\Bin\$(ProjectName)\Lib\$(PlatformTarget)\</OutDir>
+    <IntDir>$(SolutionDir)\Intermediate\$(ProjectName)\$(PlatformTarget)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\Bin\$(ProjectName)\Lib\$(PlatformTarget)\</OutDir>
+    <IntDir>$(SolutionDir)\Intermediate\$(ProjectName)\$(PlatformTarget)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)\Bin\$(ProjectName)\Lib\$(PlatformTarget)\</OutDir>
+    <IntDir>$(SolutionDir)\Intermediate\$(ProjectName)\$(PlatformTarget)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)\Bin\$(ProjectName)\Lib\$(PlatformTarget)\</OutDir>
+    <IntDir>$(SolutionDir)\Intermediate\$(ProjectName)\$(PlatformTarget)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;IMGUIEASING_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
+    </ClCompile>
+    <Link>
+      <SubSystem>NotSet</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>$(ProjectDir)\Library\SDL2\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;SDL2main.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>SDL2.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /C /s /exclude:excludeList.txt ".\*.h" "$(SolutionDir)Bin\$(ProjectName)\Include\" 
+
+xcopy /Y /C ".\Library\imgui\*.h" "$(SolutionDir)Bin\$(ProjectName)\Include\Library\imgui\"
+xcopy /Y /C ".\Library\LibraryLicense.md" "$(SolutionDir)Bin\$(ProjectName)\License\Library\"
+xcopy /Y /C ".\Library\Imgui\LICENSE.txt" "$(SolutionDir)Bin\$(ProjectName)\License\Library\Imgui\"
+xcopy /Y /C ".\Library\SDL2\docs\README.md" "$(SolutionDir)Bin\$(ProjectName)\License\Library\SDL2\"</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>xcopy /Y $(ProjectDir)Library\SDL2\lib\$(PlatformTarget)\SDL2.dll $(SolutionDir)Bin\$(ProjectName)\Lib\$(PlatformTarget)\
+rmdir /s /q $(SolutionDir)Bin\$(ProjectName)\Include\ 2&gt;nul</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;IMGUIEASING_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
+    </ClCompile>
+    <Link>
+      <SubSystem>NotSet</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>$(ProjectDir)\Library\SDL2\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;SDL2main.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>SDL2.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /C /s /exclude:excludeList.txt ".\*.h" "$(SolutionDir)Bin\$(ProjectName)\Include\" 
+
+xcopy /Y /C ".\Library\imgui\*.h" "$(SolutionDir)Bin\$(ProjectName)\Include\Library\imgui\"
+xcopy /Y /C ".\Library\LibraryLicense.md" "$(SolutionDir)Bin\$(ProjectName)\License\Library\"
+xcopy /Y /C ".\Library\Imgui\LICENSE.txt" "$(SolutionDir)Bin\$(ProjectName)\License\Library\Imgui\"
+xcopy /Y /C ".\Library\SDL2\docs\README.md" "$(SolutionDir)Bin\$(ProjectName)\License\Library\SDL2\"</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>xcopy /Y $(ProjectDir)Library\SDL2\lib\$(PlatformTarget)\SDL2.dll $(SolutionDir)Bin\$(ProjectName)\Lib\$(PlatformTarget)\
+rmdir /s /q $(SolutionDir)Bin\$(ProjectName)\Include\ 2&gt;nul</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;IMGUIEASING_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
+    </ClCompile>
+    <Link>
+      <SubSystem>NotSet</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>$(ProjectDir)\Library\SDL2\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;SDL2main.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>SDL2.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /C /s /exclude:excludeList.txt ".\*.h" "$(SolutionDir)Bin\$(ProjectName)\Include\" 
+
+xcopy /Y /C ".\Library\imgui\*.h" "$(SolutionDir)Bin\$(ProjectName)\Include\Library\imgui\"
+xcopy /Y /C ".\Library\LibraryLicense.md" "$(SolutionDir)Bin\$(ProjectName)\License\Library\"
+xcopy /Y /C ".\Library\Imgui\LICENSE.txt" "$(SolutionDir)Bin\$(ProjectName)\License\Library\Imgui\"
+xcopy /Y /C ".\Library\SDL2\docs\README.md" "$(SolutionDir)Bin\$(ProjectName)\License\Library\SDL2\"</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>xcopy /Y $(ProjectDir)Library\SDL2\lib\$(PlatformTarget)\SDL2.dll $(SolutionDir)Bin\$(ProjectName)\Lib\$(PlatformTarget)\
+rmdir /s /q $(SolutionDir)Bin\$(ProjectName)\Include\ 2&gt;nul</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;IMGUIEASING_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
+    </ClCompile>
+    <Link>
+      <SubSystem>NotSet</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>$(ProjectDir)\Library\SDL2\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;SDL2main.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>SDL2.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /C /s /exclude:excludeList.txt ".\*.h" "$(SolutionDir)Bin\$(ProjectName)\Include\" 
+
+xcopy /Y /C ".\Library\imgui\*.h" "$(SolutionDir)Bin\$(ProjectName)\Include\Library\imgui\"
+xcopy /Y /C ".\Library\LibraryLicense.md" "$(SolutionDir)Bin\$(ProjectName)\License\Library\"
+xcopy /Y /C ".\Library\Imgui\LICENSE.txt" "$(SolutionDir)Bin\$(ProjectName)\License\Library\Imgui\"
+xcopy /Y /C ".\Library\SDL2\docs\README.md" "$(SolutionDir)Bin\$(ProjectName)\License\Library\SDL2\"</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>xcopy /Y $(ProjectDir)Library\SDL2\lib\$(PlatformTarget)\SDL2.dll $(SolutionDir)Bin\$(ProjectName)\Lib\$(PlatformTarget)\
+rmdir /s /q $(SolutionDir)Bin\$(ProjectName)\Include\ 2&gt;nul</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="ImGuiEasing\ImGuiEasingCore.h" />
+    <ClInclude Include="ImGuiEasing\ImGuiEasingDefine.h" />
+    <ClInclude Include="ImGuiEasing\ImguiEasingError.h" />
+    <ClInclude Include="ImGuiEasing\UiComponentBase.h" />
+    <ClInclude Include="ImGuiEasing\ViewBase.h" />
+    <ClInclude Include="Library\imgui\imconfig.h" />
+    <ClInclude Include="Library\imgui\imgui.h" />
+    <ClInclude Include="Library\imgui\imgui_internal.h" />
+    <ClInclude Include="Library\imgui\imstb_rectpack.h" />
+    <ClInclude Include="Library\imgui\imstb_textedit.h" />
+    <ClInclude Include="Library\imgui\imstb_truetype.h" />
+    <ClInclude Include="Library\SDL2\include\SDL.h" />
+    <ClInclude Include="UiComponents\Combo\ComboUiComponent.h" />
+    <ClInclude Include="UiComponents\MenuButton\MenuButtonUiComponent.h" />
+    <ClInclude Include="UiComponents\SplitView\SplitViewUiComponent.h" />
+    <ClInclude Include="UiComponents\WindowTitleBar\WindowTitleBarUiComponent.h" />
+    <ClInclude Include="Utility\Time\Internal\StopWatch_Internal.h" />
+    <ClInclude Include="Utility\Time\Internal\TimeCounter_Internal.h" />
+    <ClInclude Include="Utility\Time\Internal\TimeManager_Internal.h" />
+    <ClInclude Include="Utility\Time\Internal\Timer_Internal.h" />
+    <ClInclude Include="Utility\Time\Internal\TimeTracker_Internal.h" />
+    <ClInclude Include="Utility\Time\StopWatch.h" />
+    <ClInclude Include="Utility\Time\TimeCounter.h" />
+    <ClInclude Include="Utility\Time\TimeManager.h" />
+    <ClInclude Include="Utility\Time\Timer.h" />
+    <ClInclude Include="Utility\Time\TimeTracker.h" />
+    <ClInclude Include="Views\CoreViews\MainViewBase.h" />
+    <ClInclude Include="Views\CoreViews\MenuViewBase.h" />
+    <ClInclude Include="Views\CoreViews\RootView.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="ImGuiEasing\ImGuiEasingCore.cpp" />
+    <ClCompile Include="ImGuiEasing\UiComponentBase.cpp" />
+    <ClCompile Include="ImGuiEasing\ViewBase.cpp" />
+    <ClCompile Include="Library\imgui\backends\imgui_impl_opengl2.cpp" />
+    <ClCompile Include="Library\imgui\backends\imgui_impl_sdl2.cpp" />
+    <ClCompile Include="Library\imgui\imgui.cpp" />
+    <ClCompile Include="Library\imgui\imgui_demo.cpp" />
+    <ClCompile Include="Library\imgui\imgui_draw.cpp" />
+    <ClCompile Include="Library\imgui\imgui_tables.cpp" />
+    <ClCompile Include="Library\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="UiComponents\Combo\ComboUiComponent.cpp" />
+    <ClCompile Include="UiComponents\MenuButton\MenuButtonUiComponent.cpp" />
+    <ClCompile Include="UiComponents\SplitView\SplitViewUiComponent.cpp" />
+    <ClCompile Include="UiComponents\WindowTitleBar\WindowTitleBarUiComponent.cpp" />
+    <ClCompile Include="Utility\Time\Internal\StopWatch_Internal.cpp" />
+    <ClCompile Include="Utility\Time\Internal\TimeCounter_Internal.cpp" />
+    <ClCompile Include="Utility\Time\Internal\TimeManager_Internal.cpp" />
+    <ClCompile Include="Utility\Time\Internal\Timer_Internal.cpp" />
+    <ClCompile Include="Utility\Time\Internal\TimeTracker_Internal.cpp" />
+    <ClCompile Include="Utility\Time\TimeManager.cpp" />
+    <ClCompile Include="Views\CoreViews\MainViewBase.cpp" />
+    <ClCompile Include="Views\CoreViews\MenuViewBase.cpp" />
+    <ClCompile Include="Views\CoreViews\RootView.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Library\imgui\.editorconfig" />
+    <None Include="Library\LibraryLicense.md" />
+    <None Include="Library\SDL2\docs\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="excludeList.txt" />
+    <Text Include="Library\imgui\LICENSE.txt" />
+    <Text Include="Library\SDL2\README.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
