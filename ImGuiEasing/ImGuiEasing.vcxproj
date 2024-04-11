@@ -115,7 +115,7 @@ xcopy /Y /C ".\Library\SDL2\docs\README.md" "$(SolutionDir)Bin\$(ProjectName)\Li
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>xcopy /Y $(ProjectDir)Library\SDL2\lib\$(PlatformTarget)\SDL2.dll $(SolutionDir)Bin\$(ProjectName)\Lib\$(PlatformTarget)\
-rmdir /s /q $(SolutionDir)Bin\$(ProjectName)\Include\</Command>
+rmdir /s /q $(SolutionDir)Bin\$(ProjectName)\Include\ 2&gt;nul</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -151,7 +151,7 @@ xcopy /Y /C ".\Library\SDL2\docs\README.md" "$(SolutionDir)Bin\$(ProjectName)\Li
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>xcopy /Y $(ProjectDir)Library\SDL2\lib\$(PlatformTarget)\SDL2.dll $(SolutionDir)Bin\$(ProjectName)\Lib\$(PlatformTarget)\
-rmdir /s /q $(SolutionDir)Bin\$(ProjectName)\Include\</Command>
+rmdir /s /q $(SolutionDir)Bin\$(ProjectName)\Include\ 2&gt;nul</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -183,7 +183,7 @@ xcopy /Y /C ".\Library\SDL2\docs\README.md" "$(SolutionDir)Bin\$(ProjectName)\Li
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>xcopy /Y $(ProjectDir)Library\SDL2\lib\$(PlatformTarget)\SDL2.dll $(SolutionDir)Bin\$(ProjectName)\Lib\$(PlatformTarget)\
-rmdir /s /q $(SolutionDir)Bin\$(ProjectName)\Include\</Command>
+rmdir /s /q $(SolutionDir)Bin\$(ProjectName)\Include\ 2&gt;nul</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -219,7 +219,7 @@ xcopy /Y /C ".\Library\SDL2\docs\README.md" "$(SolutionDir)Bin\$(ProjectName)\Li
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>xcopy /Y $(ProjectDir)Library\SDL2\lib\$(PlatformTarget)\SDL2.dll $(SolutionDir)Bin\$(ProjectName)\Lib\$(PlatformTarget)\
-rmdir /s /q $(SolutionDir)Bin\$(ProjectName)\Include\</Command>
+rmdir /s /q $(SolutionDir)Bin\$(ProjectName)\Include\ 2&gt;nul</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
