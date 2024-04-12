@@ -158,7 +158,7 @@ namespace ImGuiEasing
         //};
         coreFont = imGuiIO.Fonts->AddFontFromFileTTF(
             "C:\\Users\\UBISAM\\AppData\\Local\\Microsoft\\Windows\\Fonts\\D2Coding.ttf",
-            18.0f, NULL, &ranges[0]);
+            18.0f, NULL, imGuiIO.Fonts->);
         imGuiIO.FontDefault = coreFont;
         // Our state
 
