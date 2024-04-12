@@ -10,25 +10,25 @@ namespace ImGuiEasing
 	class Timer_Internal : public Timer
 	{
 	public:
-		const bool Running() const final;
+		_NODISCARD const bool Running() const final;
 		void Start() final;
 		void Start(const std::chrono::milliseconds& interval) final;
 		void Start(std::chrono::steady_clock::time_point& startTime) final;
 		void Start(const std::chrono::milliseconds& interval, std::chrono::steady_clock::time_point& startTime) final;
 		void Stop() final;
-		bool IsOver() final;
+		_NODISCARD bool IsOver() final;
 		const std::chrono::milliseconds Remain() final;
 	public:
-		const std::string Name() const final;
+		_NODISCARD const std::string Name() const final;
 		void Name(const std::string& name) final;
-		const std::chrono::milliseconds Interval() const final;
+		_NODISCARD const std::chrono::milliseconds Interval() const final;
 		void Interval(const std::chrono::milliseconds& interval) final;
 	private:
-		const bool Run() const;
+		_NODISCARD const bool Run() const;
 		void Run(const bool& run);
-		const std::chrono::steady_clock::time_point StartTime() const;
+		_NODISCARD const std::chrono::steady_clock::time_point StartTime() const;
 		void StartTime(const std::chrono::steady_clock::time_point& startTime);
-		const bool Over() const;
+		_NODISCARD const bool Over() const;
 		void Over(const bool& over);
 	public:
 		Timer_Internal(const std::string& name);

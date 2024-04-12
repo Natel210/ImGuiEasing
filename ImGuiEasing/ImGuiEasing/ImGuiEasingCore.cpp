@@ -13,15 +13,20 @@
 namespace ImGuiEasing
 {
     static SDL_Window* mainWindow = nullptr;
+    static SDL_GLContext glContext;
     static ImGuiContext* imGuiContext = nullptr;
+    static ImFont* coreFont = nullptr;
 
     std::shared_ptr<ViewBase> ImGuiEasingCore::_rootView = nullptr;
 
-    ImguiEasingError ImGuiEasingCore::execution()
+    ImguiEasingError ImGuiEasingCore::Init()
     {
         // Setup SDL
-        if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0)\
+        if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0)
+        {
+            SDL_Quit();
             return ImguiEasingError{ ImguiEasingErrorCode::SDL_Init_Fail, SDL_GetError() };
+        }
 
         // From 2.0.18: Enable native IME.
 #ifdef SDL_HINT_IME_SHOW_UI
@@ -44,27 +49,46 @@ namespace ImGuiEasing
             /*| SDL_WINDOW_ALWAYS_ON_TOP*/ | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);
         mainWindow = SDL_CreateWindow("Dear ImGui SDL2+OpenGL example", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, window_flags);
         if (mainWindow == nullptr)
+        {
+            SDL_DestroyWindow(mainWindow);
+            SDL_Quit();
             return ImguiEasingError{ ImguiEasingErrorCode::SDL_CreateWindow_Fail, SDL_GetError() };
+        }
         SDL_SetWindowOpacity(mainWindow, 1.0f);
 
-        SDL_GLContext glContext = SDL_GL_CreateContext(mainWindow);
+        glContext = SDL_GL_CreateContext(mainWindow);
         if (glContext == nullptr)
+        {
+            SDL_GL_DeleteContext(glContext);
+            SDL_DestroyWindow(mainWindow);
+            SDL_Quit();
             return ImguiEasingError{ ImguiEasingErrorCode::SDL_GL_CreateContext_Fail, SDL_GetError() };
+        }
         if (SDL_GL_MakeCurrent(mainWindow, glContext) != 0)
+        {
+            SDL_GL_DeleteContext(glContext);
+            SDL_DestroyWindow(mainWindow);
+            SDL_Quit();
             return ImguiEasingError{ ImguiEasingErrorCode::SDL_GL_CreateContext_Fail, SDL_GetError() };
+        }
         SDL_GL_SetSwapInterval(1); // Enable vsync
         glClearColor(0.f, 0.f, 0.f, 0.f);
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-
 
         // Setup Dear ImGui context
         IMGUI_CHECKVERSION();
         //ImGui::CreateContext();
         imGuiContext = ImGui::CreateContext();
         if (imGuiContext == nullptr)
+        {
+            ImGui::DestroyContext(imGuiContext);
+            SDL_GL_DeleteContext(glContext);
+            SDL_DestroyWindow(mainWindow);
+            SDL_Quit();
             return ImguiEasingError{ ImguiEasingErrorCode::Imgui_CreateContext_Fail, SDL_GetError() };
+        }
+
         ImGui::SetCurrentContext(imGuiContext);
         ImGuiIO& imGuiIO = ImGui::GetIO();
         (void)imGuiIO;
@@ -88,9 +112,25 @@ namespace ImGuiEasing
         }
 
         // Setup Platform/Renderer backends
-        ImGui_ImplSDL2_InitForOpenGL(mainWindow, glContext);
-        ImGui_ImplOpenGL2_Init();
-
+        if (ImGui_ImplSDL2_InitForOpenGL(mainWindow, glContext) == false)
+        {
+            ImGui_ImplSDL2_Shutdown();
+            ImGui::DestroyContext(imGuiContext);
+            SDL_GL_DeleteContext(glContext);
+            SDL_DestroyWindow(mainWindow);
+            SDL_Quit();
+            return ImguiEasingError{ ImguiEasingErrorCode::ImGui_ImplSDL2_InitForOpenGL_Fail, "ImGui_ImplSDL2_InitForOpenGL_Fail"};
+        }
+        if (ImGui_ImplOpenGL2_Init() == false)
+        {
+            ImGui_ImplOpenGL2_Shutdown();
+            ImGui_ImplSDL2_Shutdown();
+            ImGui::DestroyContext(imGuiContext);
+            SDL_GL_DeleteContext(glContext);
+            SDL_DestroyWindow(mainWindow);
+            SDL_Quit();
+            return ImguiEasingError{ ImguiEasingErrorCode::ImGui_ImplOpenGL2_Init_Fail,  "ImGui_ImplOpenGL2_Init_Fail"};
+        }
         // Load Fonts
         // - If no fonts are loaded, dear imgui will use the default font. You can also load multiple fonts and use ImGui::PushFont()/PopFont() to select them.
         // - AddFontFromFileTTF() will return the ImFont* so you can store it if you need to select the font among multiple.
@@ -99,16 +139,34 @@ namespace ImGuiEasing
         // - Use '#define IMGUI_ENABLE_FREETYPE' in your imconfig file to use Freetype for higher quality font rendering.
         // - Read 'docs/FONTS.md' for more instructions and details.
         // - Remember that in C/C++ if you want to include a backslash \ in a string literal you need to write a double backslash \\ !
-        //io.Fonts->AddFontDefault();
-        //io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\segoeui.ttf", 18.0f);
-        //io.Fonts->AddFontFromFileTTF("../../misc/fonts/DroidSans.ttf", 16.0f);
-        //io.Fonts->AddFontFromFileTTF("../../misc/fonts/Roboto-Medium.ttf", 16.0f);
-        //io.Fonts->AddFontFromFileTTF("../../misc/fonts/Cousine-Regular.ttf", 15.0f);
-        //ImFont* font = io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\ArialUni.ttf", 18.0f, nullptr, io.Fonts->GetGlyphRangesJapanese());
+        //imGuiIO.Fonts->AddFontDefault();
+        //imGuiIO.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\segoeui.ttf", 18.0f);
+        //imGuiIO.Fonts->AddFontFromFileTTF("../../misc/fonts/DroidSans.ttf", 16.0f);
+        //imGuiIO.Fonts->AddFontFromFileTTF("../../misc/fonts/Roboto-Medium.ttf", 16.0f);
+        //imGuiIO.Fonts->AddFontFromFileTTF("../../misc/fonts/Cousine-Regular.ttf", 15.0f);
+        //ImFont* font = imGuiIO.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\ArialUni.ttf", 18.0f, nullptr, imGuiIO.Fonts->GetGlyphRangesJapanese());
         //IM_ASSERT(font != nullptr);
 
+        //const ImWchar ranges[] = {
+        //    0x0020, 0x00FF, // Basic Latin + Latin Supplement
+        //    0x2000, 0x206F, // General Punctuation
+        //    0x2200, 0x22FF, // Mathematical Operators
+        //    0x3131, 0x3163, // Korean alphabets
+        //    0xAC00, 0xD7A3, // Korean characters
+        //    0xFFFD, 0xFFFD, // Invalid
+        //    0,
+        //};
+        coreFont = imGuiIO.Fonts->AddFontFromFileTTF(
+            "C:\\Users\\UBISAM\\AppData\\Local\\Microsoft\\Windows\\Fonts\\D2Coding.ttf",
+            18.0f, NULL, &ranges[0]);
+        imGuiIO.FontDefault = coreFont;
         // Our state
 
+        return ImguiEasingError{ ImguiEasingErrorCode::Ok, "" };
+    }
+
+    ImguiEasingError ImGuiEasingCore::Execution()
+    {
         // Main loop
         bool done = false;
         while (!done)
@@ -128,19 +186,6 @@ namespace ImGuiEasing
                     && event.window.event == SDL_WINDOWEVENT_CLOSE 
                     && event.window.windowID == SDL_GetWindowID(mainWindow))
                     done = true;
-                if (event.type == SDL_WINDOWEVENT
-                    && event.window.event == SDL_WINDOWEVENT_MAXIMIZED
-                    && event.window.windowID == SDL_GetWindowID(mainWindow))
-                {
-                    SDL_SetWindowBordered(mainWindow, SDL_FALSE);
-                }
-
-                if (event.type == SDL_WINDOWEVENT
-                    && event.window.event == SDL_WINDOWEVENT_RESTORED
-                    && event.window.windowID == SDL_GetWindowID(mainWindow))
-                {
-                    SDL_SetWindowBordered(mainWindow, SDL_FALSE);
-                }
             }
             // Start the Dear ImGui frame
             ImGui_ImplOpenGL2_NewFrame();
@@ -148,10 +193,16 @@ namespace ImGuiEasing
             ImGui::NewFrame();
             // Root View Render
             if (_rootView != nullptr)
+            {
                 _rootView->Render();
+            }
+
             // Imgui Rendering
             ImGui::Render();
-            glViewport(0, 0, (int)imGuiIO.DisplaySize.x, (int)imGuiIO.DisplaySize.y);
+
+            ImGuiIO imGuiIO = ImGui::GetIO();
+            ImVec2 displaySize = imGuiIO.DisplaySize;
+            glViewport(0, 0, static_cast<int>(displaySize.x), static_cast<int>(displaySize.y));
 
             glClear(GL_COLOR_BUFFER_BIT);
             //glUseProgram(0); // You may want this if using this code in an OpenGL 3+ context where shaders may be bound
@@ -173,6 +224,8 @@ namespace ImGuiEasing
         }
 
         // Cleanup
+        _rootView.reset();
+
         ImGui_ImplOpenGL2_Shutdown();
         ImGui_ImplSDL2_Shutdown();
         ImGui::DestroyContext(imGuiContext);

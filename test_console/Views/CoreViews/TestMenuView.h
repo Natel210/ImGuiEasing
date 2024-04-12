@@ -13,7 +13,7 @@ public:
 	/// <summary> Additional tasks after creating the window </summary>
 	void RenderAfter() final;
 public:
-	TestMenuView(std::shared_ptr<TestMainView> main);
+	TestMenuView(const std::string& titleName, std::shared_ptr<TestMainView> main);
 private:
 	std::shared_ptr<TestMainView> _main;
 	std::shared_ptr<ImGuiEasing::WindowTitleBarUiComponent> _windowTitleBarUiCom;

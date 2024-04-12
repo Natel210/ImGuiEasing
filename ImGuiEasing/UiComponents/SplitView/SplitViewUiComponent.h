@@ -21,29 +21,29 @@ namespace ImGuiEasing
 		void Item() final;
 	// get set
 	public: 
-		virtual const std::string DockSpaceName() const final;
-		virtual const std::string FirstWindowName() const final;
-		virtual const std::string SecondWindowName() const final;
-		virtual ImGuiDockNodeFlags DockSpaceFlag() const final;
+		_NODISCARD virtual const std::string DockSpaceName() const final;
+		_NODISCARD virtual const std::string FirstWindowName() const final;
+		_NODISCARD virtual const std::string SecondWindowName() const final;
+		_NODISCARD virtual ImGuiDockNodeFlags DockSpaceFlag() const final;
 		virtual void DockSpaceFlag(const ImGuiDockNodeFlags& dockSpaceFlag) final;
-		virtual ImGuiDir_ SplitDirection() const final;
+		_NODISCARD virtual ImGuiDir_ SplitDirection() const final;
 		virtual void SplitDirection(ImGuiDir_ splitDirection) final;
-		virtual bool SeparatorLock() const final;
+		_NODISCARD virtual bool SeparatorLock() const final;
 		virtual void SeparatorLock(bool separatorLock) final;
-		virtual bool SeparatorHide() const final;
+		_NODISCARD virtual bool SeparatorHide() const final;
 		virtual void SeparatorHide(bool separatorHide) final;
-		virtual float SeparatorSize() const final;
+		_NODISCARD virtual float SeparatorSize() const final;
 		virtual void SeparatorSize(float separatorSize) final;
 	public:
-		virtual ImGuiID RootNodeID() const final;
-		virtual ImGuiID FirstNodeID() const final;
-		virtual ImGuiID SecondNodeID() const final;
+		_NODISCARD virtual ImGuiID RootNodeID() const final;
+		_NODISCARD virtual ImGuiID FirstNodeID() const final;
+		_NODISCARD virtual ImGuiID SecondNodeID() const final;
 	public:
 		virtual const float Scale() const final;
 	private:
-		virtual const bool IsFold() const final;
+		_NODISCARD virtual const bool IsFold() const final;
 		virtual void Rebuild(const bool rebuild) final;
-		virtual const bool Rebuild() const final;
+		_NODISCARD virtual const bool Rebuild() const final;
 	// internal Logic
 	private: 
 		/// <summary> Resizes the first node. </summary>

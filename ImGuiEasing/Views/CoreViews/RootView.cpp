@@ -8,6 +8,7 @@ namespace ImGuiEasing
 		ImGui::SetNextWindowPos(ImVec2(viewport->Pos.x, viewport->Pos.y));
 		ImGui::SetNextWindowSize(ImVec2(viewport->Size.x, viewport->Size.y));
 		ImGui::SetNextWindowViewport(viewport->ID);
+		_splitViewComponent->Size(ImVec2(viewport->Size.x, viewport->Size.y));
 	}
 
 	void RootView::ApplyCustomStyle()

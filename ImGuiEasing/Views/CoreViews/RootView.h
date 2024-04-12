@@ -32,9 +32,9 @@ namespace ImGuiEasing
 		virtual void MenuView(std::shared_ptr<ImGuiEasing::MenuViewBase> menu) final;
 		/// <summary> The name of the view corresponding to [main] should be given as [MainView].  </summary>
 		virtual void MainView(std::shared_ptr<ImGuiEasing::MainViewBase> main) final;
-		virtual std::weak_ptr<ImGuiEasing::MenuViewBase> MenuView() final;
-		virtual std::weak_ptr<ImGuiEasing::MainViewBase> MainView() final;
-		virtual std::weak_ptr<ImGuiEasing::SplitViewUiComponent> SplitViewComponent() final;
+		_NODISCARD virtual std::weak_ptr<ImGuiEasing::MenuViewBase> MenuView() final;
+		_NODISCARD virtual std::weak_ptr<ImGuiEasing::MainViewBase> MainView() final;
+		_NODISCARD virtual std::weak_ptr<ImGuiEasing::SplitViewUiComponent> SplitViewComponent() final;
 	public:
 		//template <
 	public:

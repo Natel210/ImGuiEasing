@@ -148,7 +148,12 @@ namespace ImGuiEasing
 	void TimeCounter_Internal::Interval(const std::chrono::milliseconds& interval)
 	{
 		std::lock_guard<std::mutex> lock(_intervalMutex);
+		if (_interval == interval)
+			return;
 		_interval = interval;
+		//Change Interval Reset Count
+		StartTime(std::chrono::steady_clock::now());
+		LastEndTime(std::chrono::steady_clock::now());
 	}
 
 	const bool TimeCounter_Internal::Run() const

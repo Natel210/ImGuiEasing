@@ -14,9 +14,9 @@ namespace ImGuiEasing
 	public:
 		virtual const bool Running() const = 0;
 		virtual void Check() = 0;
-		virtual std::chrono::milliseconds GetDuration() = 0;
+		_NODISCARD virtual std::chrono::milliseconds GetDuration() = 0;
 	public:
-		virtual const std::string Name() const = 0;
+		_NODISCARD virtual const std::string Name() const = 0;
 		virtual void Name(const std::string& name) = 0;
 		/// <summary>
 		/// The number of buffers stored<para/>

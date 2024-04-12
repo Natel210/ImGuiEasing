@@ -8,7 +8,7 @@ namespace ImGuiEasing
 	class TimeCounter_Internal : public TimeCounter
 	{
 	public:
-		const bool Running() const final;
+		_NODISCARD const bool Running() const final;
 		void Start() final;
 		void Start(const std::chrono::milliseconds& interval) final;
 		void Start(std::chrono::steady_clock::time_point& startTime) final;
@@ -16,22 +16,22 @@ namespace ImGuiEasing
 		void Restart(std::chrono::steady_clock::time_point startTime = std::chrono::steady_clock::now()) final;
 		void Pause() final;
 		void Resume() final;
-		bool IsPause() const final;
+		_NODISCARD bool IsPause() const final;
 		void Stop() final;
-		int Counter() final;
+		_NODISCARD int Counter() final;
 	public:
-		const std::string Name() const final;
+		_NODISCARD const std::string Name() const final;
 		void Name(const std::string& name) final;
-		const std::chrono::milliseconds Interval() const final;
+		_NODISCARD const std::chrono::milliseconds Interval() const final;
 		void Interval(const std::chrono::milliseconds& interval) final;
 	private:
-		const bool Run() const;
+		_NODISCARD const bool Run() const;
 		void Run(const bool& run);
-		const std::chrono::steady_clock::time_point StartTime() const;
+		_NODISCARD const std::chrono::steady_clock::time_point StartTime() const;
 		void StartTime(const std::chrono::steady_clock::time_point& startTime);
-		const std::chrono::steady_clock::time_point LastEndTime() const;
+		_NODISCARD const std::chrono::steady_clock::time_point LastEndTime() const;
 		void LastEndTime(const std::chrono::steady_clock::time_point& lastEndTime);
-		const int Count() const;
+		_NODISCARD const int Count() const;
 		void Count(const int& count);
 	public:
 		TimeCounter_Internal(const std::string& name);

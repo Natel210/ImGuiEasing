@@ -7,21 +7,27 @@
 #include "Views/CoreViews/RootView.h"
 #include "Views/CoreViews/TestMenuView.h"
 #include "Views/CoreViews/TestMainView.h"
-using namespace ImGuiEasing;
+
 int main(int, char**)
 {
-    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    if (ImGuiEasing::ImGuiEasingCore::Init().code != ImGuiEasing::ImguiEasingErrorCode::Ok)
+    {
+        exit(0);
+    }
 
     std::shared_ptr<ImGuiEasing::RootView> testRoot = std::make_shared<ImGuiEasing::RootView>("MyRoot");
     std::shared_ptr<TestMainView> testMain = std::make_shared<TestMainView>();
-    std::shared_ptr<TestMenuView> testMenu = std::make_shared<TestMenuView>(testMain);
-
+    std::shared_ptr<TestMenuView> testMenu = std::make_shared<TestMenuView>("TEST", testMain);
+    
     testRoot->MenuView(testMenu);
     testRoot->MainView(testMain);
     ImGuiEasing::ImGuiEasingCore::ChangeView(testRoot);
-    ImGuiEasing::ImGuiEasingCore::execution();
+
+    //Running
+    ImGuiEasing::ImguiEasingError result = ImGuiEasing::ImGuiEasingCore::Execution();
+    if (result.code != ImGuiEasing::ImguiEasingErrorCode::Ok)
+        std::cout << result.comment << std::endl;
     exit(0);
-    return 0;
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴

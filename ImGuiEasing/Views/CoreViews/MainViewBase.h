@@ -27,16 +27,16 @@ namespace ImGuiEasing
 		/// <summary> This function must be used at the beginning of WindowItem 
 		/// if docking functionality is to be used. </summary>
 		virtual void UseMainDockSpace() final;
-		virtual const std::string MainDockSpaceName() final;
+		_NODISCARD virtual const std::string MainDockSpaceName() final;
 	public:
 		virtual bool AddView(std::shared_ptr<ImGuiEasing::ViewBase> view) final;
 		virtual bool AddView(const std::string& name, std::shared_ptr<ImGuiEasing::ViewBase> view) final;
 		virtual bool DelView(const std::string& name) final;
 	public:
-		virtual std::shared_ptr<ViewBase> GetViewBase(const std::string& name) final;
+		_NODISCARD virtual std::shared_ptr<ViewBase> GetViewBase(const std::string& name) final;
 	public:
 		template<class _ViewBaseTypeClass>
-		std::shared_ptr<_ViewBaseTypeClass> GetView(const std::string& name)
+		_NODISCARD std::shared_ptr<_ViewBaseTypeClass> GetView(const std::string& name)
 		{
 			auto getView = GetViewBase(name);
 			if (getView == nullptr)

@@ -67,7 +67,7 @@ namespace ImGuiEasing
 	MainViewBase::MainViewBase() : ViewBase("MainView")
 	{
 		WindowFlags(ImGuiWindowFlags_NoTitleBar
-			| ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove
+			| ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove
 			| ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoCollapse);
 	}
 

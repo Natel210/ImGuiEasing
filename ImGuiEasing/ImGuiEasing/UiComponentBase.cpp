@@ -86,7 +86,7 @@ namespace ImGuiEasing
     }
 
     UiComponentBase::UiComponentBase(const std::string& name)
-        : _name(name), _show(true), _size(ImVec2()),
+        : _name(name), _show(true), _size(ImVec2(-1.f,-1.f)),
         _windowFlags(ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoBackground),
         _childFlags(ImGuiChildFlags_None)
     {

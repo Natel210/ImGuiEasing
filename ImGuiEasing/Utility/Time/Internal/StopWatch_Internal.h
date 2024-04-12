@@ -8,25 +8,25 @@ namespace ImGuiEasing
 	class StopWatch_Internal : public StopWatch
 	{
 	public:
-		const bool Running() const final;
+		_NODISCARD const bool Running() const final;
 		void Start(std::chrono::steady_clock::time_point startTime = std::chrono::steady_clock::now()) final;
 		void Restart(std::chrono::steady_clock::time_point startTime = std::chrono::steady_clock::now()) final;
 		void Pause() final;
 		void Resume() final;
-		bool IsPause() const final;
+		_NODISCARD bool IsPause() const final;
 		void Stop() final;
-		std::chrono::milliseconds GetDuration(std::chrono::steady_clock::time_point nowTime = std::chrono::steady_clock::now()) final;
+		_NODISCARD std::chrono::milliseconds GetDuration(std::chrono::steady_clock::time_point nowTime = std::chrono::steady_clock::now()) final;
 	public:
-		const std::string Name() const final;
+		_NODISCARD const std::string Name() const final;
 		void Name(const std::string& name) final;
 	private:
-		const bool Run() const;
+		_NODISCARD const bool Run() const;
 		void Run(const bool& run);
-		const std::chrono::steady_clock::time_point StartTime() const;
+		_NODISCARD const std::chrono::steady_clock::time_point StartTime() const;
 		void StartTime(const std::chrono::steady_clock::time_point& startTime);
-		const std::chrono::steady_clock::time_point LastEndTime() const;
+		_NODISCARD const std::chrono::steady_clock::time_point LastEndTime() const;
 		void LastEndTime(const std::chrono::steady_clock::time_point& lastEndTime);
-		const std::chrono::milliseconds Duration() const;
+		_NODISCARD const std::chrono::milliseconds Duration() const;
 		void Duration(const std::chrono::milliseconds& duration);
 	public:
 		StopWatch_Internal(const std::string& name);

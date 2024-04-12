@@ -3,6 +3,7 @@ namespace ImGuiEasing
 {
 	void MenuViewBase::SetNextWindowOption()
 	{
+		ImGui::SetNextWindowSize(ImVec2(-1.f, -1.f));
 	}
 
 	void MenuViewBase::ApplyCustomStyle()
@@ -20,7 +21,7 @@ namespace ImGuiEasing
 	MenuViewBase::MenuViewBase() : ViewBase("MenuView")
 	{
 		WindowFlags(ImGuiWindowFlags_NoTitleBar
-			| ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove
+			| ImGuiWindowFlags_NoMove
 			| ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoCollapse);
 	}
 

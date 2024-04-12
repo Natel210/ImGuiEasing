@@ -19,8 +19,17 @@
     <Filter Include="Views\CoreViews\cpp">
       <UniqueIdentifier>{d397c02e-0085-415b-bf9a-6f55a7484047}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Views\NewFilter1">
+    <Filter Include="UiComponents\Time">
+      <UniqueIdentifier>{bb2b403b-81d4-4e6a-aca1-3a80257f470d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UiComponents\Time\cpp">
+      <UniqueIdentifier>{df0356ca-f6b7-4789-8db0-405d243f1804}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Views\Time">
       <UniqueIdentifier>{0ce2b29a-0547-493f-8411-3fbf804e2f05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Views\Time\cpp">
+      <UniqueIdentifier>{314e589d-76f4-4062-bd93-9a62598bedcd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -34,6 +43,24 @@
     <ClCompile Include="Views\CoreViews\TestMenuView.cpp">
       <Filter>Views\CoreViews\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="UiComponents\Time\StopWatchUIComponent.cpp">
+      <Filter>UiComponents\Time\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="UiComponents\Time\TimeCounterUIComponent.cpp">
+      <Filter>UiComponents\Time\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="UiComponents\Time\TimerUiComponent.cpp">
+      <Filter>UiComponents\Time\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="UiComponents\Time\TimeTrackerUIComponent.cpp">
+      <Filter>UiComponents\Time\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Views\Time\TimeView.cpp">
+      <Filter>Views\Time\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="UiComponents\Time\CurrentClockUIComponent.cpp">
+      <Filter>UiComponents\Time\cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Views\Menu\MenuController.h">
@@ -44,6 +71,24 @@
     </ClInclude>
     <ClInclude Include="Views\CoreViews\TestMenuView.h">
       <Filter>Views\CoreViews</Filter>
+    </ClInclude>
+    <ClInclude Include="UiComponents\Time\StopWatchUIComponent.h">
+      <Filter>UiComponents\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="UiComponents\Time\TimeCounterUIComponent.h">
+      <Filter>UiComponents\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="UiComponents\Time\TimerUiComponent.h">
+      <Filter>UiComponents\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="UiComponents\Time\TimeTrackerUIComponent.h">
+      <Filter>UiComponents\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Views\Time\TimeView.h">
+      <Filter>Views\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="UiComponents\Time\CurrentClockUIComponent.h">
+      <Filter>UiComponents\Time</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

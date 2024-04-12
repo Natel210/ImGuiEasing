@@ -13,26 +13,26 @@
 namespace ImGuiEasing
 {
 	/// <summary> A builder for time-related classes. </summary>
-	class IMGUIEASING_API Lucid_TimeManager
+	class IMGUIEASING_API TimeManager
 	{
 	public:
 		/// <summary> Retrieves the current system time set in the operating system. </summary>
-		static std::chrono::system_clock::time_point GetCurrentSystemTime();
+		_NODISCARD static std::chrono::system_clock::time_point GetCurrentSystemTime();
 
-		static std::weak_ptr<StopWatch> CreateStopWatch(const std::string& name);
-		static std::weak_ptr<StopWatch> GetStopWatch(const std::string& name);
+		static std::shared_ptr<ImGuiEasing::StopWatch> CreateStopWatch(const std::string& name);
+		_NODISCARD static std::shared_ptr<ImGuiEasing::StopWatch> GetStopWatch(const std::string& name);
 		static void DelStopWatch(const std::string& name);
 
-		static std::weak_ptr<TimeCounter> CreateTimeCounter(const std::string& name);
-		static std::weak_ptr<TimeCounter> GetTimeCounter(const std::string& name);
+		static std::shared_ptr<ImGuiEasing::TimeCounter> CreateTimeCounter(const std::string& name);
+		_NODISCARD static std::shared_ptr<ImGuiEasing::TimeCounter> GetTimeCounter(const std::string& name);
 		static void DelTimeCounter(const std::string& name);
 
-		static std::weak_ptr<Timer> CreateTimer(const std::string& name);
-		static std::weak_ptr<Timer> GetTimer(const std::string& name);
+		static std::shared_ptr<ImGuiEasing::Timer> CreateTimer(const std::string& name);
+		_NODISCARD static std::shared_ptr<ImGuiEasing::Timer> GetTimer(const std::string& name);
 		static void DelTimer(const std::string& name);
 
-		static std::weak_ptr<TimeTracker> CreateTimeTracker(const std::string& name);
-		static std::weak_ptr<TimeTracker> GetTimeTracker(const std::string& name);
+		static std::shared_ptr<ImGuiEasing::TimeTracker> CreateTimeTracker(const std::string& name);
+		_NODISCARD static std::shared_ptr<ImGuiEasing::TimeTracker> GetTimeTracker(const std::string& name);
 		static void DelTimeTracker(const std::string& name);
 	};
 }

@@ -10,10 +10,10 @@ namespace ImGuiEasing
 	class IMGUIEASING_API ViewBase
 	{
 	public:
-		virtual const std::string Name() const final;
-		virtual ImGuiWindowFlags WindowFlags() const final;
+		_NODISCARD virtual const std::string Name() const final;
+		_NODISCARD virtual ImGuiWindowFlags WindowFlags() const final;
 		virtual void WindowFlags(const ImGuiWindowFlags& windowFlags) final;
-		virtual const bool Show() const final;
+		_NODISCARD virtual const bool Show() const final;
 		virtual void Show(const bool show) final;
 	public:
 		virtual void Render() final;

@@ -17,11 +17,11 @@ namespace ImGuiEasing
 
 	public:
 		void ItemList(const std::vector<std::string>& list);
-		std::vector<std::string> ItemList() const;
+		_NODISCARD std::vector<std::string> ItemList() const;
 	private:
 		void SelectedString(const std::string selectedString);
 	public:
-		std::string SelectedString() const;
+		_NODISCARD std::string SelectedString() const;
 	public:
 		ComboUiComponent(std::string name, std::string defaultString);
 		~ComboUiComponent() = default;

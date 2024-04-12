@@ -3,96 +3,171 @@
 #include <iostream>
 namespace ImGuiEasing
 {
+	constexpr char closeWindowButtonName[] = "X";
+	constexpr char restoredWindowButtonName[] = u8"д▒";
+	constexpr char maxWindowButtonName[] = u8"бр";
+	constexpr char minWindowButtonName[] = "_";
+
 	void ImGuiEasing::WindowTitleBarUiComponent::Item()
 	{
-		auto size = Size();
-
-		ImVec2 buttonSize = ImVec2(Size().y, Size().y);
-
-		DragLogic();
-
+		ImVec2 uiComponentSize = Size();
+		ImVec2 buttonSize = ImVec2(uiComponentSize.y, uiComponentSize.y);
 		
+		std::string colorWindow = Name() + "_ColorWindow";
+		ImGui::PushStyleColor(ImGuiCol_ChildBg, Color());
+		ImGui::BeginChild(colorWindow.c_str(), uiComponentSize);
+		ImGui::PopStyleColor();
 
-
-
-
-		ImGui::SameLine();
-		if (ImGui::Button("Restored", buttonSize))
+		// 
+		int buttonCount = 0;
+		if (UseClose() == true)
 		{
-			ImGuiEasing::ImGuiEasingCore::WindowRestored();
+			ImGui::SameLine(uiComponentSize.x - (buttonSize.x * ++buttonCount));
+			// able image button
+			if (ImGui::Button(closeWindowButtonName, buttonSize))
+			{
+				ImGuiEasing::ImGuiEasingCore::WindowClose();
+			}
 		}
-		ImGui::SameLine();
-		if (ImGui::Button("Min", buttonSize))
+		if (UseMaximize() == true)
 		{
-			ImGuiEasing::ImGuiEasingCore::WindowMinimize();
+			ImGui::SameLine(uiComponentSize.x - (buttonSize.x * ++buttonCount));
+			if (_isFullScreen == true)
+			{
+				// able image button
+				if (ImGui::Button(restoredWindowButtonName, buttonSize))
+				{
+					ImGuiEasing::ImGuiEasingCore::WindowRestored();
+					_isFullScreen = false;
+				}
+			}
+			else
+			{
+				// able image button
+				if (ImGui::Button(maxWindowButtonName, buttonSize))
+				{
+					ImGuiEasing::ImGuiEasingCore::WindowMaximize();
+					_isFullScreen = true;
+				}
+			}
 		}
-		ImGui::SameLine();
-		if (ImGui::Button("Max", buttonSize))
+		if (UseMinimize() == true)
 		{
-			ImGuiEasing::ImGuiEasingCore::WindowMaximize();
-		}
-		ImGui::SameLine();
-		if (ImGui::Button("Close", buttonSize))
-		{
-			ImGuiEasing::ImGuiEasingCore::WindowClose();
+			ImGui::SameLine(uiComponentSize.x - (buttonSize.x * ++buttonCount));
+			// able image button
+			if (ImGui::Button(minWindowButtonName, buttonSize))
+			{
+				ImGuiEasing::ImGuiEasingCore::WindowMinimize();
+			}
 		}
 
+		// make title
+		const std::string text = Name();
+		ImVec2 textSize = ImGui::CalcTextSize(text.c_str());
 
+		ImVec2 titleRect;
+		titleRect.x = (uiComponentSize.x - textSize.x - (buttonSize.x * ++buttonCount)) * 0.5f;
+		titleRect.y = (uiComponentSize.y - textSize.y) * 0.5f;
+
+		ImGui::SetCursorPos(titleRect);
+		ImGui::Text("%s", text.c_str());
+
+		DragLogic((buttonSize.x * buttonCount));
+
+		ImGui::EndChild();
 	}
 
-	void WindowTitleBarUiComponent::DragLogic()
+	void WindowTitleBarUiComponent::Color(const ImVec4& color)
 	{
-		// no dragging
-		if (isDraggingWindow == false)
-		{
-			// check area
-			// col point to rect
-			auto curMousePos = ImGui::GetMousePos();
-			auto curComPos = ImGui::GetWindowPos();
-			auto curComSize = Size();
-			float l = curComPos.x;
-			float r = curComPos.x + curComSize.x;
-			float t = curComPos.y;
-			float b = curComPos.y + curComSize.y;
-			if (curMousePos.x < l || r < curMousePos.x)
-				return;
-			else if (curMousePos.y < t || b < curMousePos.y)
-				return;
-		}
+		std::lock_guard<std::mutex> lock(_colorMutex);
+		_color = color;
+	}
+
+	const ImVec4 WindowTitleBarUiComponent::Color() const
+	{
+		std::lock_guard<std::mutex> lock(_colorMutex);
+		return _color;
+	}
+
+	void WindowTitleBarUiComponent::UseMinimize(const bool boolan)
+	{
+		std::lock_guard<std::mutex> lock(_useMinimizeMutex);
+		_useMinimize = boolan;
+	}
+
+	const bool WindowTitleBarUiComponent::UseMinimize() const
+	{
+		std::lock_guard<std::mutex> lock(_useMinimizeMutex);
+		return _useMinimize;
+	}
+
+	void WindowTitleBarUiComponent::UseMaximize(const bool boolan)
+	{
+		std::lock_guard<std::mutex> lock(_useMaximizeMutex);
+		_useMaximize = boolan;
+	}
+
+	const bool WindowTitleBarUiComponent::UseMaximize() const
+	{
+		std::lock_guard<std::mutex> lock(_useMaximizeMutex);
+		return _useMaximize;
+	}
+
+	void WindowTitleBarUiComponent::UseClose(const bool boolean)
+	{
+		std::lock_guard<std::mutex> lock(_useCloseMutex);
+		_useClose = boolean;
+	}
+
+	const bool WindowTitleBarUiComponent::UseClose() const
+	{
+		std::lock_guard<std::mutex> lock(_useCloseMutex);
+		return _useClose;
+	}
+
+	void WindowTitleBarUiComponent::DragLogic(const float buttonAreaX)
+	{
 
 		// drag options
 		if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_SourceNoPreviewTooltip
-			| ImGuiDragDropFlags_AcceptNoPreviewTooltip | ImGuiDragDropFlags_AcceptNoDrawDefaultRect))
+			| ImGuiDragDropFlags_AcceptNoPreviewTooltip | ImGuiDragDropFlags_AcceptNoDrawDefaultRect | ImGuiDragDropFlags_SourceAllowNullID))
 		{
 			ImGui::EndDragDropSource();
 		}
 
+		std::string colorWindow = Name() + "_ColorWindow";
 		// start drag
-		if (isDraggingWindow == false && ImGui::IsMouseDragging(ImGuiMouseButton_Left))
+		if (_isDraggingWindow == false 
+			&& ImGui::IsKeyPressed(ImGuiKey_MouseLeft, false) == true)
 		{
-			dragStartMousePos = ImGui::GetMousePos();
-			ImGuiEasing::ImGuiEasingCore::WindowGetPos(dragStartWindowPosX, dragStartWindowPosY);
-			isDraggingWindow = true;
+			ImGuiEasing::ImGuiEasingCore::WindowGetPos(_dragStartWindowPosX, _dragStartWindowPosY);
+			ImVec2 curComPos = ImGui::GetWindowPos();
+			ImVec2 curComSize = Size();
+			ImVec2 calRect = ImVec2(curComPos.x + curComSize.x - buttonAreaX, curComPos.y + curComSize.y);
+			if (ImGui::IsMouseHoveringRect(curComPos, ImVec2(curComPos.x + curComSize.x - buttonAreaX, curComPos.y + curComSize.y)) == false)
+				return;
+			_isDraggingWindow = true;
 		}
 		// dragging
-		if (isDraggingWindow == true && ImGui::IsMouseDragging(ImGuiMouseButton_Left))
+		if (_isDraggingWindow == true && ImGui::IsMouseDragging(ImGuiMouseButton_Left) == true)
 		{
 			ImVec2 dragDelta = ImGui::GetMouseDragDelta(ImGuiMouseButton_Left);
-			ImGuiEasing::ImGuiEasingCore::WindowSetPos(dragStartWindowPosX + static_cast<int>(dragDelta.x),
-				dragStartWindowPosY + static_cast<int>(dragDelta.y));
+			ImGuiEasing::ImGuiEasingCore::WindowSetPos(
+				_dragStartWindowPosX + static_cast<int>(dragDelta.x),
+				_dragStartWindowPosY + static_cast<int>(dragDelta.y));
 		}
 		// end drag
-		if (!ImGui::IsMouseDragging(ImGuiMouseButton_Left) && isDraggingWindow)
+		if (ImGui::IsMouseReleased(ImGuiMouseButton_Left) == true && _isDraggingWindow)
 		{
-			isDraggingWindow = false;
+			_isDraggingWindow = false;
 		}
 	}
 
 	ImGuiEasing::WindowTitleBarUiComponent::WindowTitleBarUiComponent(std::string name)
 		: UiComponentBase(name), 
 		_isFullScreen(false),
-		_useMinimize(true), _useMaximize(true), _useClose(true),
-		_dragStartMousePos(ImVec2()), _dragStartWindowPosX(0), _dragStartWindowPosY(0), _isDraggingWindow(false)
+		_color(ImVec4()), _useMinimize(true), _useMaximize(true), _useClose(true),
+		_dragStartWindowPosX(-1), _dragStartWindowPosY(-1), _isDraggingWindow(false)
 	{
 	}
 

@@ -5,6 +5,7 @@
 #include "Views/CoreViews/MainViewBase.h"
 
 #include "Views/Menu/MenuController.h"
+#include "Views/Time/TimeView.h"
 
 class TestMainView : public ImGuiEasing::MainViewBase
 {
@@ -18,5 +19,6 @@ public:
 	TestMainView();
 private:
 	std::shared_ptr<MenuController> _menuController;
+	std::shared_ptr<TimeView> _timeView;
 };
 

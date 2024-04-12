@@ -71,10 +71,8 @@ namespace ImGuiEasing
 			ImGui::PushStyleVar(ImGuiStyleVar_DockingSeparatorSize, SeparatorSize());
 
 		
-		ImGui::PushStyleColor(ImGuiCol_DockingEmptyBg, ImVec4());
-		ImGui::DockSpace(_dockSpaceID, ImVec2(0.f,0.f), tempRootDockNodeFlag);
+		ImGui::DockSpace(_dockSpaceID, Size(), tempRootDockNodeFlag);
 		ImGui::PopStyleVar();
-		ImGui::PopStyleColor();
 
 		if (_rebuild == true)
 		{
@@ -283,5 +281,7 @@ namespace ImGuiEasing
 		_dockSpaceID(NULL), _firstNodeID(NULL), _secondNodeID(NULL),
 		_rebuild(true), _fold(false), _scale(100.0f)
 	{
+		WindowFlags(ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoTitleBar
+			| ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoFocusOnAppearing |  ImGuiWindowFlags_NoBackground);
 	}
 }

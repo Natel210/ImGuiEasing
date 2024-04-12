@@ -1,117 +1,96 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="Library\imgui\imgui.h">
-      <Filter>Library\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\imgui\imgui_internal.h">
-      <Filter>Library\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\SDL2\include\SDL.h">
-      <Filter>Library\SDL2</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\imgui\imstb_truetype.h">
-      <Filter>Library\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\imgui\imstb_rectpack.h">
-      <Filter>Library\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\imgui\imstb_textedit.h">
-      <Filter>Library\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\imgui\imconfig.h">
-      <Filter>Library\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="ImGuiEasing\ViewBase.h">
-      <Filter>ImGuiEasing</Filter>
-    </ClInclude>
     <ClInclude Include="ImGuiEasing\ImGuiEasingCore.h">
-      <Filter>ImGuiEasing</Filter>
-    </ClInclude>
-    <ClInclude Include="ImGuiEasing\ImguiEasingError.h">
-      <Filter>ImGuiEasing</Filter>
-    </ClInclude>
-    <ClInclude Include="ImGuiEasing\UiComponentBase.h">
-      <Filter>ImGuiEasing</Filter>
+      <Filter>ImGuiEasing\h</Filter>
     </ClInclude>
     <ClInclude Include="ImGuiEasing\ImGuiEasingDefine.h">
-      <Filter>ImGuiEasing</Filter>
+      <Filter>ImGuiEasing\h</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\Time\Internal\StopWatch_Internal.h">
-      <Filter>Utility\Time\Internal</Filter>
+    <ClInclude Include="ImGuiEasing\ImguiEasingError.h">
+      <Filter>ImGuiEasing\h</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\Time\Internal\TimeCounter_Internal.h">
-      <Filter>Utility\Time\Internal</Filter>
+    <ClInclude Include="ImGuiEasing\UiComponentBase.h">
+      <Filter>ImGuiEasing\h</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\Time\Internal\TimeManager_Internal.h">
-      <Filter>Utility\Time\Internal</Filter>
+    <ClInclude Include="ImGuiEasing\ViewBase.h">
+      <Filter>ImGuiEasing\h</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\Time\Internal\Timer_Internal.h">
-      <Filter>Utility\Time\Internal</Filter>
+    <ClInclude Include="Library\imgui\imconfig.h">
+      <Filter>Library\imgui\h</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\Time\Internal\TimeTracker_Internal.h">
-      <Filter>Utility\Time\Internal</Filter>
+    <ClInclude Include="Library\imgui\imgui.h">
+      <Filter>Library\imgui\h</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\Time\TimeTracker.h">
-      <Filter>Utility\Time</Filter>
+    <ClInclude Include="Library\imgui\imgui_internal.h">
+      <Filter>Library\imgui\h</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\Time\TimeManager.h">
-      <Filter>Utility\Time</Filter>
+    <ClInclude Include="Library\imgui\imstb_rectpack.h">
+      <Filter>Library\imgui\h</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\Time\StopWatch.h">
-      <Filter>Utility\Time</Filter>
+    <ClInclude Include="Library\imgui\imstb_textedit.h">
+      <Filter>Library\imgui\h</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\Time\TimeCounter.h">
-      <Filter>Utility\Time</Filter>
+    <ClInclude Include="Library\imgui\imstb_truetype.h">
+      <Filter>Library\imgui\h</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\Time\Timer.h">
-      <Filter>Utility\Time</Filter>
-    </ClInclude>
-    <ClInclude Include="UiComponents\Combo\ComboUiComponent.h">
-      <Filter>UiComponents\Combo</Filter>
-    </ClInclude>
-    <ClInclude Include="UiComponents\MenuButton\MenuButtonUiComponent.h">
-      <Filter>UiComponents\MenuButton</Filter>
-    </ClInclude>
-    <ClInclude Include="UiComponents\SplitView\SplitViewUiComponent.h">
-      <Filter>UiComponents\SplitView</Filter>
-    </ClInclude>
-    <ClInclude Include="Views\CoreViews\MenuViewBase.h">
-      <Filter>Views\CoreView</Filter>
-    </ClInclude>
-    <ClInclude Include="Views\CoreViews\RootView.h">
-      <Filter>Views\CoreView</Filter>
+    <ClInclude Include="Library\SDL2\include\SDL.h">
+      <Filter>Library\SDL2\h</Filter>
     </ClInclude>
     <ClInclude Include="Views\CoreViews\MainViewBase.h">
-      <Filter>Views\CoreView</Filter>
+      <Filter>Views\CoreView\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Views\CoreViews\MenuViewBase.h">
+      <Filter>Views\CoreView\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Views\CoreViews\RootView.h">
+      <Filter>Views\CoreView\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\Time\StopWatch.h">
+      <Filter>Utility\Time\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\Time\TimeCounter.h">
+      <Filter>Utility\Time\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\Time\TimeManager.h">
+      <Filter>Utility\Time\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\Time\Timer.h">
+      <Filter>Utility\Time\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\Time\TimeTracker.h">
+      <Filter>Utility\Time\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\Time\Internal\TimeTracker_Internal.h">
+      <Filter>Utility\Time\Internal\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\Time\Internal\StopWatch_Internal.h">
+      <Filter>Utility\Time\Internal\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\Time\Internal\TimeCounter_Internal.h">
+      <Filter>Utility\Time\Internal\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\Time\Internal\TimeManager_Internal.h">
+      <Filter>Utility\Time\Internal\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\Time\Internal\Timer_Internal.h">
+      <Filter>Utility\Time\Internal\h</Filter>
+    </ClInclude>
+    <ClInclude Include="UiComponents\Combo\ComboUiComponent.h">
+      <Filter>UiComponents\Combo\h</Filter>
+    </ClInclude>
+    <ClInclude Include="UiComponents\MenuButton\MenuButtonUiComponent.h">
+      <Filter>UiComponents\MenuButton\h</Filter>
+    </ClInclude>
+    <ClInclude Include="UiComponents\SplitView\SplitViewUiComponent.h">
+      <Filter>UiComponents\SplitView\h</Filter>
     </ClInclude>
     <ClInclude Include="UiComponents\WindowTitleBar\WindowTitleBarUiComponent.h">
-      <Filter>UiComponents\WindowTitleBar</Filter>
+      <Filter>UiComponents\WindowTitleBar\h</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="Library\imgui\imgui.cpp">
-      <Filter>Library\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\imgui\imgui_draw.cpp">
-      <Filter>Library\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\imgui\imgui_tables.cpp">
-      <Filter>Library\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\imgui\imgui_widgets.cpp">
-      <Filter>Library\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\imgui\imgui_demo.cpp">
-      <Filter>Library\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\imgui\backends\imgui_impl_opengl2.cpp">
-      <Filter>Library\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\imgui\backends\imgui_impl_sdl2.cpp">
-      <Filter>Library\imgui</Filter>
-    </ClCompile>
     <ClCompile Include="ImGuiEasing\UiComponentBase.cpp">
       <Filter>ImGuiEasing\cpp</Filter>
     </ClCompile>
@@ -159,6 +138,27 @@
     </ClCompile>
     <ClCompile Include="UiComponents\WindowTitleBar\WindowTitleBarUiComponent.cpp">
       <Filter>UiComponents\WindowTitleBar\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\imgui\imgui.cpp">
+      <Filter>Library\imgui\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\imgui\imgui_demo.cpp">
+      <Filter>Library\imgui\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\imgui\imgui_draw.cpp">
+      <Filter>Library\imgui\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\imgui\backends\imgui_impl_opengl2.cpp">
+      <Filter>Library\imgui\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\imgui\backends\imgui_impl_sdl2.cpp">
+      <Filter>Library\imgui\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\imgui\imgui_tables.cpp">
+      <Filter>Library\imgui\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\imgui\imgui_widgets.cpp">
+      <Filter>Library\imgui\cpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -234,25 +234,64 @@
     <Filter Include="UiComponents\WindowTitleBar\cpp">
       <UniqueIdentifier>{ac3d89d1-b786-45de-b023-b700efe13055}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Library\imgui\cpp">
+      <UniqueIdentifier>{49794391-fecf-4ccb-bf49-5721a846bb93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImGuiEasing\h">
+      <UniqueIdentifier>{87e8ac05-fb51-4af8-8ee9-2efa2f61db7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\imgui\h">
+      <UniqueIdentifier>{c0dae853-699d-4fbb-991d-9bd671fa0e20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\imgui\else">
+      <UniqueIdentifier>{e3c48751-fedd-4d70-a7e5-515627332d92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\SDL2\h">
+      <UniqueIdentifier>{131fa9c3-03a4-4759-bc73-73da8e856a77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\SDL2\else">
+      <UniqueIdentifier>{31e026da-4f5e-4f81-a2cf-0af5231b0c58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Views\CoreView\h">
+      <UniqueIdentifier>{4134152b-c0d6-4d6a-8912-dabd5b652d72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Time\h">
+      <UniqueIdentifier>{b95420c3-6b9a-470b-829f-045929bfe119}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Time\Internal\h">
+      <UniqueIdentifier>{0f11338f-42c9-470f-acbe-d0f714bd6dfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UiComponents\WindowTitleBar\h">
+      <UniqueIdentifier>{4b93f3ba-1a21-419b-a949-2c5a1e011f9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UiComponents\SplitView\h">
+      <UniqueIdentifier>{bf29805d-910c-4dba-b589-5581cfb3a099}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UiComponents\MenuButton\h">
+      <UniqueIdentifier>{440ac7e6-23ab-4e9b-bb15-3aefdcd6fb8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UiComponents\Combo\h">
+      <UniqueIdentifier>{5c11bfe1-2cf8-4d44-a0ca-fdacf949d1bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\LibraryLicense.md">
       <Filter>Library</Filter>
     </None>
     <None Include="Library\imgui\.editorconfig">
-      <Filter>Library\imgui</Filter>
+      <Filter>Library\imgui\else</Filter>
     </None>
     <None Include="Library\SDL2\docs\README.md">
-      <Filter>Library\SDL2</Filter>
+      <Filter>Library\SDL2\else</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="excludeList.txt" />
     <Text Include="Library\imgui\LICENSE.txt">
-      <Filter>Library\imgui</Filter>
+      <Filter>Library\imgui\else</Filter>
     </Text>
     <Text Include="Library\SDL2\README.txt">
-      <Filter>Library\SDL2</Filter>
+      <Filter>Library\SDL2\else</Filter>
     </Text>
-    <Text Include="excludeList.txt" />
   </ItemGroup>
 </Project>

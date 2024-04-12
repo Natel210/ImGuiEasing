@@ -10,18 +10,18 @@ namespace ImGuiEasing
 	class IMGUIEASING_API Timer
 	{
 	public:
-		virtual const bool Running() const = 0;
+		_NODISCARD virtual const bool Running() const = 0;
 		virtual void Start() = 0;
 		virtual void Start(const std::chrono::milliseconds& interval) = 0;
 		virtual void Start(std::chrono::steady_clock::time_point& startTime) = 0;
 		virtual void Start(const std::chrono::milliseconds& interval, std::chrono::steady_clock::time_point& startTime) = 0;
 		virtual void Stop() = 0;
-		virtual bool IsOver() = 0;
-		virtual const std::chrono::milliseconds Remain() = 0;
+		_NODISCARD virtual bool IsOver() = 0;
+		_NODISCARD virtual const std::chrono::milliseconds Remain() = 0;
 	public:
-		virtual const std::string Name() const = 0;
+		_NODISCARD virtual const std::string Name() const = 0;
 		virtual void Name(const std::string& name) = 0;
-		virtual const std::chrono::milliseconds Interval() const = 0;
+		_NODISCARD virtual const std::chrono::milliseconds Interval() const = 0;
 		virtual void Interval(const std::chrono::milliseconds& interval) = 0;
 	public:
 		virtual ~Timer() = default;

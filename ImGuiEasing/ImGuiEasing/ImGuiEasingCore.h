@@ -2,6 +2,7 @@
 #include <string>
 #include <memory>
 #include <unordered_map>
+#include <filesystem>
 
 #include <Library/imgui/imgui.h>
 
@@ -15,11 +16,12 @@ namespace ImGuiEasing
 	class IMGUIEASING_API ImGuiEasingCore
 	{
 	public:
-		static ImguiEasingError execution();
+		_NODISCARD static ImguiEasingError Init();
+		_NODISCARD static ImguiEasingError Execution();
 		static void ChangeView(std::shared_ptr<ViewBase> rootView);
-		static std::shared_ptr<ViewBase> GetRootView_ToViewBase();
+		_NODISCARD static std::shared_ptr<ViewBase> GetRootView_ToViewBase();
 		template <typename _viewClass>
-		static std::shared_ptr<_viewClass> GetRootView()
+		_NODISCARD static std::shared_ptr<_viewClass> GetRootView()
 		{
 			std::shared_ptr<ViewBase> viewBase = GetRootView_ToViewBase();
 			return std::reinterpret_pointer_cast<_viewClass>(viewBase);
@@ -44,7 +46,7 @@ namespace ImGuiEasing
 	};
 
 	template <typename _viewClass>
-	static std::shared_ptr<ViewBase> ToViewBase(std::shared_ptr<_viewClass> view) {
+	_NODISCARD static std::shared_ptr<ViewBase> ToViewBase(std::shared_ptr<_viewClass> view) {
 		return std::dynamic_pointer_cast<ViewBase>(view);
 	}
 

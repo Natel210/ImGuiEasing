@@ -14,28 +14,9 @@ namespace ImGuiEasing
 		SDL_CreateWindow_Fail,
 		SDL_GL_CreateContext_Fail,
 		Imgui_CreateContext_Fail,
+		ImGui_ImplSDL2_InitForOpenGL_Fail,
+		ImGui_ImplOpenGL2_Init_Fail,
 	};
-
-	extern "C++"
-	{
-		static const std::string ToString_ImguiEasing_ErrorCode(ImguiEasingErrorCode code)
-		{
-			switch (code)
-			{
-			case ImguiEasingErrorCode::Ok:
-				return "Ok";
-			case ImguiEasingErrorCode::SDL_Init_Fail:
-				return "SDL_Init_Fail";
-			case ImguiEasingErrorCode::SDL_GL_SetAttribute_Fail:
-				return "SDL_GL_SetAttribute_Fail";
-			case ImguiEasingErrorCode::SDL_CreateWindow_Fail:
-				return "SDL_CreateWindow_Fail";
-			default:
-				break;
-			}
-			return "Unknown";
-		}
-	}
 
 	struct IMGUIEASING_API ImguiEasingError
 	{

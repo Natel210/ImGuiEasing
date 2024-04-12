@@ -20,7 +20,7 @@ namespace ImGuiEasing
 		return std::chrono::system_clock::now();
 	}
 
-	std::weak_ptr<StopWatch> TimeManager_Internal::CreateStopWatch(std::string name)
+	std::shared_ptr<StopWatch> TimeManager_Internal::CreateStopWatch(std::string name)
 	{
 		std::lock_guard<std::mutex> lock(_stopWathDicMutex);
 		if (_stopWathDic.count(name) == 0)
@@ -28,11 +28,11 @@ namespace ImGuiEasing
 		return _stopWathDic.at(name);
 	}
 
-	std::weak_ptr<StopWatch> TimeManager_Internal::GetStopWatch(std::string name)
+	std::shared_ptr<StopWatch> TimeManager_Internal::GetStopWatch(std::string name)
 	{
 		std::lock_guard<std::mutex> lock(_stopWathDicMutex);
 		if (_stopWathDic.count(name) == 0)
-			return std::weak_ptr<StopWatch>();
+			return nullptr;
 		return _stopWathDic.at(name);
 	}
 
@@ -44,7 +44,7 @@ namespace ImGuiEasing
 		_stopWathDic.erase(name);
 	}
 
-	std::weak_ptr<TimeCounter> TimeManager_Internal::CreateTimeCounter(std::string name)
+	std::shared_ptr<TimeCounter> TimeManager_Internal::CreateTimeCounter(std::string name)
 	{
 		std::lock_guard<std::mutex> lock(_timeCounterDicMutex);
 		if (_timeCounterDic.count(name) == 0)
@@ -52,11 +52,11 @@ namespace ImGuiEasing
 		return _timeCounterDic.at(name);
 	}
 
-	std::weak_ptr<TimeCounter> TimeManager_Internal::GetTimeCounter(std::string name)
+	std::shared_ptr<TimeCounter> TimeManager_Internal::GetTimeCounter(std::string name)
 	{
 		std::lock_guard<std::mutex> lock(_timeCounterDicMutex);
 		if (_timeCounterDic.count(name) == 0)
-			return std::weak_ptr<TimeCounter>();
+			return nullptr;
 		return _timeCounterDic.at(name);
 	}
 
@@ -68,7 +68,7 @@ namespace ImGuiEasing
 		_timeCounterDic.erase(name);
 	}
 
-	std::weak_ptr<Timer> TimeManager_Internal::CreateTimer(std::string name)
+	std::shared_ptr<Timer> TimeManager_Internal::CreateTimer(std::string name)
 	{
 		std::lock_guard<std::mutex> lock(_timerDicMutex);
 		if (_timerDic.count(name) == 0)
@@ -76,11 +76,11 @@ namespace ImGuiEasing
 		return _timerDic.at(name);
 	}
 
-	std::weak_ptr<Timer> TimeManager_Internal::GetTimer(std::string name)
+	std::shared_ptr<Timer> TimeManager_Internal::GetTimer(std::string name)
 	{
 		std::lock_guard<std::mutex> lock(_timerDicMutex);
 		if (_timerDic.count(name) == 0)
-			return std::weak_ptr<Timer>();
+			return nullptr;
 		return _timerDic.at(name);
 	}
 
@@ -92,7 +92,7 @@ namespace ImGuiEasing
 		_timerDic.erase(name);
 	}
 
-	std::weak_ptr<TimeTracker> TimeManager_Internal::CreateTimeTracker(std::string name)
+	std::shared_ptr<TimeTracker> TimeManager_Internal::CreateTimeTracker(std::string name)
 	{
 		std::lock_guard<std::mutex> lock(_timeTrackerDicMutex);
 		if (_timeTrackerDic.count(name) == 0)
@@ -100,11 +100,11 @@ namespace ImGuiEasing
 		return _timeTrackerDic.at(name);
 	}
 
-	std::weak_ptr<TimeTracker> TimeManager_Internal::GetTimeTracker(std::string name)
+	std::shared_ptr<TimeTracker> TimeManager_Internal::GetTimeTracker(std::string name)
 	{
 		std::lock_guard<std::mutex> lock(_timeTrackerDicMutex);
 		if (_timeTrackerDic.count(name) == 0)
-			return std::weak_ptr<TimeTracker>();
+			return nullptr;
 		return _timeTrackerDic.at(name);
 	}
 

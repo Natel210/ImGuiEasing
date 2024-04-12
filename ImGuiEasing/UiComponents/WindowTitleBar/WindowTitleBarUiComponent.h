@@ -12,26 +12,36 @@ namespace ImGuiEasing
 		void Item() override;
 #pragma endregion
 	public:
-		void UseMinimize(const bool boolan);
-		void UseMaximize(const bool boolan);
-		void UseClose(const bool boolean);
+		virtual void Color(const ImVec4& color) final;
+		_NODISCARD virtual const ImVec4 Color() const final;
+	public:
+		virtual void UseMinimize(const bool boolan) final;
+		_NODISCARD virtual const bool UseMinimize() const final;
+		virtual void UseMaximize(const bool boolan) final;
+		_NODISCARD virtual const bool UseMaximize() const final;
+		virtual void UseClose(const bool boolean) final;
+		_NODISCARD virtual const bool UseClose() const final;
 	private:
-		void DragLogic();
+		void DragLogic(const float buttonAreaX);
 	public:
 		WindowTitleBarUiComponent(std::string name);
+		virtual ~WindowTitleBarUiComponent() = default;
 	private:
 		bool _isFullScreen = false;
-	private:
+	private: // set options
+		ImVec4 _color = ImVec4();
 		bool _useMinimize = true;
 		bool _useMaximize = true;
 		bool _useClose = true;
-	private:
-
-	private:
-		ImVec2 _dragStartMousePos;
-		int _dragStartWindowPosX;
-		int _dragStartWindowPosY;
+	private: // window drag member
+		int _dragStartWindowPosX = -1;
+		int _dragStartWindowPosY = -1;
 		bool _isDraggingWindow = false;
+	private:
+		mutable std::mutex _colorMutex;
+		mutable std::mutex _useMinimizeMutex;
+		mutable std::mutex _useMaximizeMutex;
+		mutable std::mutex _useCloseMutex;
 	};
 }
 #pragma warning(default: 4251)

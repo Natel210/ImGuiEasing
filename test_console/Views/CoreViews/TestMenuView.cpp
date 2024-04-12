@@ -4,8 +4,8 @@
 
 void TestMenuView::WindowItem()
 {
-
-
+	ImVec2 testSize = ImGui::GetWindowSize();
+	_windowTitleBarUiCom->Size(testSize.x, 30.f);
 	_windowTitleBarUiCom->Render();
 	ImGui::NewLine();
 	_fileMenuUiCom->Render();
@@ -18,10 +18,12 @@ void TestMenuView::RenderAfter()
 {
 }
 
-TestMenuView::TestMenuView(std::shared_ptr<TestMainView> main) : ImGuiEasing::MenuViewBase(), _main(main)
+TestMenuView::TestMenuView(const std::string& titleName, std::shared_ptr<TestMainView> main)
+	: ImGuiEasing::MenuViewBase(), _main(main)
 {
-	_windowTitleBarUiCom = std::make_shared<ImGuiEasing::WindowTitleBarUiComponent>("TitleBar");
-	_windowTitleBarUiCom->Size(0.0f, 30.0f);
+	_windowTitleBarUiCom = std::make_shared<ImGuiEasing::WindowTitleBarUiComponent>(titleName);
+	_windowTitleBarUiCom->Color(ImVec4(0.212f, 0.459f, 0.533f, 0.8f));
+	//_windowTitleBarUiCom->Size(0.0f, 0.0f);
 
 	_fileMenuUiCom = std::make_shared<ImGuiEasing::MenuButtonUiComponent>("FileMenu");
 	_fileMenuUiCom->FillMunuItems([]() {
@@ -45,8 +47,8 @@ TestMenuView::TestMenuView(std::shared_ptr<TestMainView> main) : ImGuiEasing::Me
 	_viewMenuUiCom->FillMunuItems([&]() {
 		if (_main != nullptr)
 		{
-			addMenuItem(_main->GetViewBase("MenuController"));
-			addMenuItem(_main->GetViewBase("TimeItems"));
+			addMenuItem(_main->GetViewBase("MyMenuController"));
+			addMenuItem(_main->GetViewBase("MyTimeView"));
 			//add menu
 		}
 	});

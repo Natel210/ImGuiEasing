@@ -16,22 +16,22 @@ namespace ImGuiEasing
 	{
 	public:
 		/// <summary> Retrieves the current system time set in the operating system. </summary>
-		static std::chrono::system_clock::time_point GetCurrentSystemTime();
+		_NODISCARD static std::chrono::system_clock::time_point GetCurrentSystemTime();
 
-		static std::weak_ptr<StopWatch> CreateStopWatch(std::string name);
-		static std::weak_ptr<StopWatch> GetStopWatch(std::string name);
+		static std::shared_ptr<StopWatch> CreateStopWatch(std::string name);
+		_NODISCARD static std::shared_ptr<StopWatch> GetStopWatch(std::string name);
 		static void DelStopWatch(std::string name);
 
-		static std::weak_ptr<TimeCounter> CreateTimeCounter(std::string name);
-		static std::weak_ptr<TimeCounter> GetTimeCounter(std::string name);
+		static std::shared_ptr<TimeCounter> CreateTimeCounter(std::string name);
+		_NODISCARD static std::shared_ptr<TimeCounter> GetTimeCounter(std::string name);
 		static void DelTimeCounter(std::string name);
 
-		static std::weak_ptr<Timer> CreateTimer(std::string name);
-		static std::weak_ptr<Timer> GetTimer(std::string name);
+		static std::shared_ptr<Timer> CreateTimer(std::string name);
+		_NODISCARD static std::shared_ptr<Timer> GetTimer(std::string name);
 		static void DelTimer(std::string name);
 
-		static std::weak_ptr<TimeTracker> CreateTimeTracker(std::string name);
-		static std::weak_ptr<TimeTracker> GetTimeTracker(std::string name);
+		static std::shared_ptr<TimeTracker> CreateTimeTracker(std::string name);
+		_NODISCARD static std::shared_ptr<TimeTracker> GetTimeTracker(std::string name);
 		static void DelTimeTracker(std::string name);
 
 	private:

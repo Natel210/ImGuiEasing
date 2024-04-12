@@ -12,15 +12,15 @@ namespace ImGuiEasing
 	class IMGUIEASING_API UiComponentBase
 	{
 	public:
-		virtual const std::string Name() const final;
+		_NODISCARD virtual const std::string Name() const final;
 		virtual void Name(const std::string& name) final;
-		virtual ImGuiWindowFlags WindowFlags() const final;
+		_NODISCARD virtual ImGuiWindowFlags WindowFlags() const final;
 		virtual void WindowFlags(const ImGuiWindowFlags& windowFlags) final;
-		virtual ImGuiChildFlags ChildFlags() const final;
+		_NODISCARD virtual ImGuiChildFlags ChildFlags() const final;
 		virtual void ChildFlags(const ImGuiChildFlags& childFlags) final;
-		virtual const bool Show() const final;
+		_NODISCARD virtual const bool Show() const final;
 		virtual void Show(const bool show) final;
-		virtual const ImVec2 Size() const final;
+		_NODISCARD virtual const ImVec2 Size() const final;
 		virtual void Size(const ImVec2 size) final;
 		virtual void Size(const float x, const float y) final;
 	public:
@@ -37,7 +37,7 @@ namespace ImGuiEasing
 		ImGuiWindowFlags _windowFlags = ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoBackground;
 		ImGuiChildFlags _childFlags = ImGuiChildFlags_None;
 		bool _show = true; // def : Show!
-		ImVec2 _size;
+		ImVec2 _size = ImVec2(-1.f,-1.f);
 	private: // mutex
 		mutable std::mutex _nameMutex;
 		mutable std::mutex _windowFlagsMutex;
