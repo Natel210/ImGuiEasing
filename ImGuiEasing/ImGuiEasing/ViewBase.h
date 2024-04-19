@@ -39,11 +39,6 @@ namespace ImGuiEasing
 		const std::string _name;
 		ImGuiWindowFlags _windowFlags = ImGuiWindowFlags_NoCollapse;
 		bool _show = true;
-	private: // mutex
-		mutable std::mutex _nameMutex;
-		mutable std::mutex _windowFlagsMutex;
-		mutable std::mutex _showMutex;
-		mutable std::mutex _sizeMutex;
 	};
 }
 #pragma warning(default: 4251)

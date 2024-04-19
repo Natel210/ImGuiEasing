@@ -38,11 +38,5 @@ namespace ImGuiEasing
 		bool _over = false;
 		std::chrono::steady_clock::time_point _startTime = std::chrono::steady_clock::now();
 		std::chrono::milliseconds _interval = std::chrono::milliseconds(1000);
-	private: // mutex
-		mutable std::mutex _nameMutex;
-		mutable std::mutex _runMutex;
-		mutable std::mutex _overMutex;
-		mutable std::mutex _startMutex;
-		mutable std::mutex _intervalMutex;
 	};
 }

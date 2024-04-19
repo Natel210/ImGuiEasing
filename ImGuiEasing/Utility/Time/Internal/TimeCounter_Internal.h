@@ -43,13 +43,5 @@ namespace ImGuiEasing
 		std::chrono::steady_clock::time_point _startTime = std::chrono::steady_clock::now();
 		std::chrono::steady_clock::time_point _lastEndTime = std::chrono::steady_clock::now();
 		std::chrono::milliseconds _interval = std::chrono::milliseconds(1000);
-	private: // mutex
-		mutable std::mutex _nameMutex;
-		mutable std::mutex _runMutex;
-		mutable std::mutex _pauseMutex;
-		mutable std::mutex _countMutex;
-		mutable std::mutex _startMutex;
-		mutable std::mutex _lastEndMutex;
-		mutable std::mutex _intervalMutex;
 	};
 }

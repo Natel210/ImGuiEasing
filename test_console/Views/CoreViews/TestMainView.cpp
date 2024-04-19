@@ -1,8 +1,9 @@
 #include "TestMainView.h"
 #include <memory>
+#include "ImGuiEasing/ImGuiEasingCore.h"
 #include "testMenuView.h"
-
-#include <ImGuiEasing/ImGuiEasingCore.h>
+#include "Views/Menu/MenuController.h"
+#include "Views/Time/TimeView.h"
 
 void TestMainView::WindowItem()
 {
@@ -31,13 +32,17 @@ void TestMainView::RenderAfter()
 	_timeView->Render();
 }
 
-TestMainView::TestMainView() : ImGuiEasing::MainViewBase()
+TestMainView::TestMainView() : ImGuiEasing::MainViewBase(),
+	_menuController(nullptr), _timeView(nullptr)
 {
-	_menuController = std::make_shared<MenuController>("MyMenuController");
-	AddView(_menuController);
+	{
+		_menuController = std::make_shared<MenuController>("MyMenuController");
+		AddView(_menuController);
 
-	_timeView = std::make_shared<TimeView>("MyTimeView");
-	AddView(_timeView);
+		_timeView = std::make_shared<TimeItemsView>("MyTimeView");
+		AddView(_timeView);
+	}
+
 
 	//ImGuiIO imGuiIO = ImGui::GetIO();
 	//ImGuiEasing::ImGuiEasingCore::CreateImguiFont("kr1", "C:\\Users\\UBISAM\\AppData\\Local\\Microsoft\\Windows\\Fonts\\D2Coding.ttf", 18.0f, NULL, imGuiIO.Fonts->GetGlyphRangesKorean());

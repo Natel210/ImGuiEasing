@@ -8,7 +8,7 @@ namespace ImGuiEasing
 	/// <summary>
 	/// simple combo box
 	/// </summary>
-	class IMGUIEASING_API ComboUiComponent : public UiComponentBase
+	class IMGUIEASING_API ComboUiComponent : public ImGuiEasing::UiComponentBase
 	{
 
 	protected:

@@ -8,7 +8,7 @@
 namespace ImGuiEasing
 {
 	/// <summary> Creates a grid </summary>
-	class IMGUIEASING_API SplitViewUiComponent : public UiComponentBase
+	class IMGUIEASING_API SplitViewUiComponent : public ImGuiEasing::UiComponentBase
 	{
 	// func
 	public:
@@ -81,15 +81,6 @@ namespace ImGuiEasing
 		bool _separatorLock = false;
 		bool _separatorHide = false;
 		float _separatorSize = 3.f;
-	private: // mutex
-		mutable std::mutex _dockSpaceFlagMutex;
-		mutable std::mutex _splitDirectionMutex;
-		mutable std::mutex _rebuildMutex;
-		mutable std::mutex _foldMutex;
-		mutable std::mutex _scaleMutex;
-		mutable std::mutex _separatorLockMutex;
-		mutable std::mutex _separatorHideMutex;
-		mutable std::mutex _separatorSizeMutex;
 	private:
 		static constexpr float _foldScale = 0.00000000000001f;
 	};

@@ -38,13 +38,6 @@ namespace ImGuiEasing
 		ImGuiChildFlags _childFlags = ImGuiChildFlags_None;
 		bool _show = true; // def : Show!
 		ImVec2 _size = ImVec2(-1.f,-1.f);
-	private: // mutex
-		mutable std::mutex _nameMutex;
-		mutable std::mutex _windowFlagsMutex;
-		mutable std::mutex _childFlagsMutex;
-		mutable std::mutex _showMutex;
-		mutable std::mutex _sizeMutex;
-
 	};
 }
 #pragma warning(default: 4251)

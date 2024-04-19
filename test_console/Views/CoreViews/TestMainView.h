@@ -19,6 +19,6 @@ public:
 	TestMainView();
 private:
 	std::shared_ptr<MenuController> _menuController;
-	std::shared_ptr<TimeView> _timeView;
+	std::shared_ptr<TimeItemsView> _timeView;
 };
 

@@ -29,26 +29,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -96,7 +96,6 @@
       <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <SDLCheck>false</SDLCheck>
     </ClCompile>
     <Link>
       <SubSystem>NotSet</SubSystem>
@@ -133,7 +132,6 @@ rmdir /s /q $(SolutionDir)Bin\$(ProjectName)\Include\ 2&gt;nul</Command>
       <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <SDLCheck>false</SDLCheck>
     </ClCompile>
     <Link>
       <SubSystem>NotSet</SubSystem>
@@ -170,7 +168,6 @@ rmdir /s /q $(SolutionDir)Bin\$(ProjectName)\Include\ 2&gt;nul</Command>
       <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <SDLCheck>false</SDLCheck>
     </ClCompile>
     <Link>
       <SubSystem>NotSet</SubSystem>
@@ -207,7 +204,6 @@ rmdir /s /q $(SolutionDir)Bin\$(ProjectName)\Include\ 2&gt;nul</Command>
       <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <SDLCheck>false</SDLCheck>
     </ClCompile>
     <Link>
       <SubSystem>NotSet</SubSystem>
@@ -261,6 +257,8 @@ rmdir /s /q $(SolutionDir)Bin\$(ProjectName)\Include\ 2&gt;nul</Command>
     <ClInclude Include="Utility\Time\TimeManager.h" />
     <ClInclude Include="Utility\Time\Timer.h" />
     <ClInclude Include="Utility\Time\TimeTracker.h" />
+    <ClInclude Include="Views\CoreViews\Internal\MainViewDefault_Internal.h" />
+    <ClInclude Include="Views\CoreViews\Internal\MenuViewDefault_Internal.h" />
     <ClInclude Include="Views\CoreViews\MainViewBase.h" />
     <ClInclude Include="Views\CoreViews\MenuViewBase.h" />
     <ClInclude Include="Views\CoreViews\RootView.h" />

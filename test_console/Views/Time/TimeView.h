@@ -7,7 +7,7 @@
 #include "UiComponents/Time/TimerUiComponent.h"
 #include "UiComponents/Time/TimeTrackerUIComponent.h"
 
-class TimeView : public ImGuiEasing::ViewBase
+class TimeItemsView : public ImGuiEasing::ViewBase
 {
 protected:
 	/// <summary> Options like SetNextWindowPos </summary>
@@ -25,8 +25,8 @@ protected:
 	/// <summary> Additional tasks after creating the window </summary>
 	void RenderAfter() override;
 public:
-	TimeView(const std::string& name);
-	virtual ~TimeView() = default;
+	TimeItemsView(const std::string& name);
+	virtual ~TimeItemsView() = default;
 private:
 	std::shared_ptr<CurrentClockUIComponent> _currentClockUIComponent;
 	std::shared_ptr<StopWatchUIComponent> _stopWatchUIComponent;

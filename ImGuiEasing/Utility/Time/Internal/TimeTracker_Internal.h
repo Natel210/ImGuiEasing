@@ -41,11 +41,5 @@ namespace ImGuiEasing
 		bool _run = false;
 		std::chrono::steady_clock::time_point _checkTime = std::chrono::steady_clock::now();
 		std::deque<std::chrono::milliseconds> _durationDeque;
-	private:
-		mutable std::mutex _nameMutex;
-		mutable std::mutex _bufferSizeMutex;
-		mutable std::mutex _runMutex;
-		mutable std::mutex _checkTimeMutex;
-		mutable std::mutex _durationDequeMutex;
 	};
 }

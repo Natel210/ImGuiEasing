@@ -74,7 +74,7 @@ void TimerUiComponent::Item()
 
 	ImGui::PopItemWidth(); // Restore width settings to default
 	if (tempTimer->IsOver())
-		ImGui::Text(u8"段引喫");
+		ImGui::Text("段引喫");
 	// Ends the current child window
 	ImGui::EndChild();
 

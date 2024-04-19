@@ -36,10 +36,7 @@ namespace ImGuiEasing
 		_NODISCARD virtual std::weak_ptr<ImGuiEasing::MainViewBase> MainView() final;
 		_NODISCARD virtual std::weak_ptr<ImGuiEasing::SplitViewUiComponent> SplitViewComponent() final;
 	public:
-		//template <
-	public:
 		RootView();
-		RootView(std::string name);
 		~RootView();
 	private:
 		std::shared_ptr<ImGuiEasing::SplitViewUiComponent> _splitViewComponent = nullptr;

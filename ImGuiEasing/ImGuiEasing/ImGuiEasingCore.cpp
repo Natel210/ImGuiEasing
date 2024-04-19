@@ -45,7 +45,7 @@ namespace ImGuiEasing
         if (SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2) != 0)
             return ImguiEasingError{ ImguiEasingErrorCode::SDL_GL_SetAttribute_Fail, SDL_GetError() };
 
-        SDL_WindowFlags window_flags = (SDL_WindowFlags)(SDL_WINDOW_OPENGL | SDL_WINDOW_BORDERLESS
+        SDL_WindowFlags window_flags = (SDL_WindowFlags)(SDL_WINDOW_OPENGL /*| SDL_WINDOW_BORDERLESS*/
             /*| SDL_WINDOW_ALWAYS_ON_TOP*/ | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);
         mainWindow = SDL_CreateWindow("Dear ImGui SDL2+OpenGL example", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, window_flags);
         if (mainWindow == nullptr)
@@ -158,8 +158,9 @@ namespace ImGuiEasing
         //};
         coreFont = imGuiIO.Fonts->AddFontFromFileTTF(
             "C:\\Users\\UBISAM\\AppData\\Local\\Microsoft\\Windows\\Fonts\\D2Coding.ttf",
-            18.0f, NULL, imGuiIO.Fonts->);
+            18.0f, NULL, imGuiIO.Fonts->GetGlyphRangesKorean());
         imGuiIO.FontDefault = coreFont;
+        // 
         // Our state
 
         return ImguiEasingError{ ImguiEasingErrorCode::Ok, "" };

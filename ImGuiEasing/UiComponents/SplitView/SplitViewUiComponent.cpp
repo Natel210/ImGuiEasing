@@ -6,12 +6,10 @@ namespace ImGuiEasing
 	
 	void SplitViewUiComponent::Fold()
 	{
-		std::unique_lock<std::mutex> lock(_foldMutex);
 		// Ensures it operates only once during exchange
 		if (_fold == true)
 			return;
 		_fold = true;
-		lock.unlock();
 		// Adjusts scale based on the split direction
 		if (ImGui::DockBuilderGetNode(FirstNodeID()) != nullptr)
 		{
@@ -26,18 +24,15 @@ namespace ImGuiEasing
 
 	void SplitViewUiComponent::Open()
 	{
-		std::unique_lock<std::mutex> lock(_foldMutex);
 		// Ensures it operates only once during exchange
 		if (_fold == false)
 			return;
 		_fold = false;
-		lock.unlock();
 		ResizingNode(Scale());
 	}
 
 	void SplitViewUiComponent::Scale(const float scale)
 	{
-		std::lock_guard<std::mutex> lock(_scaleMutex);
 		// Ensures it operates only once during exchange
 		if (_scale == scale)
 			return;
@@ -105,28 +100,23 @@ namespace ImGuiEasing
 
 	ImGuiDockNodeFlags SplitViewUiComponent::DockSpaceFlag() const
 	{
-		std::lock_guard<std::mutex> lock(_dockSpaceFlagMutex);
 		return _dockSpaceFlag;
 	}
 
 	void SplitViewUiComponent::DockSpaceFlag(const ImGuiDockNodeFlags& dockSpaceFlag)
 	{
-		std::lock_guard<std::mutex> lock(_dockSpaceFlagMutex);
 		_dockSpaceFlag = dockSpaceFlag;
 	}
 
 	ImGuiDir_ SplitViewUiComponent::SplitDirection() const
 	{
-		std::lock_guard<std::mutex> lock(_splitDirectionMutex);
 		return _splitDirection;
 	}
 
 	void SplitViewUiComponent::SplitDirection(ImGuiDir_ splitDirection)
 	{
-		std::unique_lock<std::mutex> lock(_splitDirectionMutex);
 		if (_splitDirection == splitDirection)
 			return;
-		lock.unlock();
 		if (IsFold() == false && ImGui::DockBuilderGetNode(FirstNodeID()) != nullptr)
 		{
 			ImVec2 lastScale = ImGui::DockBuilderGetNode(FirstNodeID())->SizeRef;
@@ -135,91 +125,75 @@ namespace ImGuiEasing
 			else if (SplitDirection() == ImGuiDir_Up || SplitDirection() == ImGuiDir_Down)
 				Scale(lastScale.y);
 		}
-		lock.lock();
 		_splitDirection = splitDirection;
-		lock.unlock();
 		Rebuild(true);
 	}
 
 	bool SplitViewUiComponent::SeparatorLock() const
 	{
-		std::unique_lock<std::mutex> lock(_separatorLockMutex);
 		return _separatorLock;
 	}
 
 	void SplitViewUiComponent::SeparatorLock(bool separatorLock)
 	{
-		std::unique_lock<std::mutex> lock(_separatorLockMutex);
 		_separatorLock = separatorLock;
 	}
 
 	bool SplitViewUiComponent::SeparatorHide() const
 	{
-		std::unique_lock<std::mutex> lock(_separatorHideMutex);
 		return _separatorHide;
 	}
 
 	void SplitViewUiComponent::SeparatorHide(bool separatorHide)
 	{
-		std::unique_lock<std::mutex> lock(_separatorHideMutex);
 		_separatorHide = separatorHide;
 	}
 
 	float SplitViewUiComponent::SeparatorSize() const
 	{
-		std::unique_lock<std::mutex> lock(_separatorSizeMutex);
 		return _separatorSize;
 	}
 
 	void SplitViewUiComponent::SeparatorSize(float separatorSize)
 	{
-		std::unique_lock<std::mutex> lock(_separatorSizeMutex);
 		_separatorSize = separatorSize;
 	}
 
 	ImGuiID SplitViewUiComponent::RootNodeID() const
 	{
-		std::lock_guard<std::mutex> lock(_rebuildMutex);
 		return _dockSpaceID;
 	}
 
 	ImGuiID SplitViewUiComponent::FirstNodeID() const
 	{
-		std::lock_guard<std::mutex> lock(_rebuildMutex);
 		return _firstNodeID;
 	}
 
 	ImGuiID SplitViewUiComponent::SecondNodeID() const
 	{
-		std::lock_guard<std::mutex> lock(_rebuildMutex);
 		return _secondNodeID;
 	}
 
 	const float SplitViewUiComponent::Scale() const
 	{
-		std::lock_guard<std::mutex> lock(_scaleMutex);
 		return _scale;
 	}
 
 	const bool SplitViewUiComponent::IsFold() const
 	{
-		std::lock_guard<std::mutex> lock(_foldMutex);
 		return _fold;
 	}
 
 	void SplitViewUiComponent::Rebuild(const bool rebuild)
 	{
-		std::unique_lock<std::mutex> lock(_rebuildMutex);
 		if (_rebuild == rebuild)
 			return;
 		_rebuild = rebuild;
-		lock.unlock();
 
 	}
 
 	const bool SplitViewUiComponent::Rebuild() const
 	{
-		std::lock_guard<std::mutex> lock(_rebuildMutex);
 		return _rebuild;
 	}
 
@@ -248,7 +222,6 @@ namespace ImGuiEasing
 	{
 		if (IsFold() == true) // 펴질떄 까지 대기
 			return;
-		std::lock_guard<std::mutex> lock(_rebuildMutex);
 		if (_rebuild == false)
 			return;
 		if (_dockSpaceID == NULL)

@@ -1,5 +1,8 @@
 #include "RootView.h"
 #include <Library/imgui/imgui_internal.h>
+#include "Views/CoreViews/Internal/MainViewDefault_Internal.h"
+#include "Views/CoreViews/Internal/MenuViewDefault_Internal.h"
+
 namespace ImGuiEasing
 {
 	void RootView::SetNextWindowOption()
@@ -30,8 +33,10 @@ namespace ImGuiEasing
 
 	void RootView::RenderAfter()
 	{
-		_menuView->Render();
-		_mainView->Render();
+		if (_menuView != nullptr)
+			_menuView->Render();
+		if (_mainView != nullptr)
+			_mainView->Render();
 	}
 
 	void RootView::MenuView(std::shared_ptr<ImGuiEasing::MenuViewBase> menu)
@@ -71,29 +76,21 @@ namespace ImGuiEasing
 
 	RootView::RootView() : ViewBase("RootView")
 	{
+		// Set Flags
 		WindowFlags(ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus
 			| ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoTitleBar
 			| ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize
 			| ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoBackground);
 
+		// Set Empty View
+		_menuView = std::make_shared<MenuViewDefault_Internal>();
+		_mainView = std::make_shared<MainViewDefault_Internal>();
+
+		// Set Spliter
 		_splitViewComponent = std::make_shared<SplitViewUiComponent>(
 			"RootSplitView", "RootDockSpace",
 			"MenuView", "MainView"
 			, ImGuiDockNodeFlags_HiddenTabBar | ImGuiDockNodeFlags_NoTabBar 
-			| ImGuiDockNodeFlags_NoDocking, ImGuiDir_::ImGuiDir_Up);
-	}
-
-	RootView::RootView(std::string name) : ViewBase(name)
-	{
-		WindowFlags(ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus
-			| ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoTitleBar
-			| ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize
-			| ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoBackground);
-
-		_splitViewComponent = std::make_shared<SplitViewUiComponent>(
-			"RootSplitView", "RootDockSpace",
-			"MenuView", "MainView"
-			, ImGuiDockNodeFlags_HiddenTabBar | ImGuiDockNodeFlags_NoTabBar
 			| ImGuiDockNodeFlags_NoDocking, ImGuiDir_::ImGuiDir_Up);
 	}
 

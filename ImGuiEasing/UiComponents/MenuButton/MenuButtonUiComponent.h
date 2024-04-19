@@ -8,7 +8,7 @@ namespace ImGuiEasing
 	/// <summary>
 	/// push button pop menu window
 	/// </summary>
-	class IMGUIEASING_API MenuButtonUiComponent : public UiComponentBase
+	class IMGUIEASING_API MenuButtonUiComponent : public ImGuiEasing::UiComponentBase
 	{
 #pragma region inherited function
 	protected:

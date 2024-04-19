@@ -4,7 +4,7 @@
 #pragma warning(disable: 4251)
 namespace ImGuiEasing
 {
-	class IMGUIEASING_API WindowTitleBarUiComponent : public UiComponentBase
+	class IMGUIEASING_API WindowTitleBarUiComponent : public ImGuiEasing::UiComponentBase
 	{
 #pragma region inherited function
 	protected:
@@ -24,7 +24,7 @@ namespace ImGuiEasing
 	private:
 		void DragLogic(const float buttonAreaX);
 	public:
-		WindowTitleBarUiComponent(std::string name);
+		WindowTitleBarUiComponent(const std::string& name);
 		virtual ~WindowTitleBarUiComponent() = default;
 	private:
 		bool _isFullScreen = false;
@@ -37,11 +37,6 @@ namespace ImGuiEasing
 		int _dragStartWindowPosX = -1;
 		int _dragStartWindowPosY = -1;
 		bool _isDraggingWindow = false;
-	private:
-		mutable std::mutex _colorMutex;
-		mutable std::mutex _useMinimizeMutex;
-		mutable std::mutex _useMaximizeMutex;
-		mutable std::mutex _useCloseMutex;
 	};
 }
 #pragma warning(default: 4251)

@@ -88,6 +88,12 @@
     <ClInclude Include="UiComponents\WindowTitleBar\WindowTitleBarUiComponent.h">
       <Filter>UiComponents\WindowTitleBar\h</Filter>
     </ClInclude>
+    <ClInclude Include="Views\CoreViews\Internal\MenuViewDefault_Internal.h">
+      <Filter>Views\CoreView\Intermal\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Views\CoreViews\Internal\MainViewDefault_Internal.h">
+      <Filter>Views\CoreView\Intermal\h</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -272,6 +278,12 @@
     </Filter>
     <Filter Include="UiComponents\Combo\h">
       <UniqueIdentifier>{5c11bfe1-2cf8-4d44-a0ca-fdacf949d1bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Views\CoreView\Intermal">
+      <UniqueIdentifier>{d34dcee4-ad60-4079-9b95-952d2166d043}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Views\CoreView\Intermal\h">
+      <UniqueIdentifier>{47fb63a6-905b-4de3-a956-3f7232cdc152}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -73,61 +73,51 @@ namespace ImGuiEasing
 
 	const std::string Timer_Internal::Name() const
 	{
-		std::lock_guard<std::mutex> lock(_nameMutex);
 		return _name.c_str();
 	}
 
 	void Timer_Internal::Name(const std::string& name)
 	{
-		std::lock_guard<std::mutex> lock(_nameMutex);
 		_name = name;
 	}
 
 	const std::chrono::milliseconds Timer_Internal::Interval() const
 	{
-		std::lock_guard<std::mutex> lock(_intervalMutex);
 		return _interval;
 	}
 
 	void Timer_Internal::Interval(const std::chrono::milliseconds& interval)
 	{
-		std::lock_guard<std::mutex> lock(_intervalMutex);
 		_interval = interval;
 	}
 
 	const bool Timer_Internal::Run() const
 	{
-		std::lock_guard<std::mutex> lock(_runMutex);
 		return _run;
 	}
 
 	void Timer_Internal::Run(const bool& run)
 	{
-		std::lock_guard<std::mutex> lock(_runMutex);
 		_run = run;
 	}
 
 	const std::chrono::steady_clock::time_point Timer_Internal::StartTime() const
 	{
-		std::lock_guard<std::mutex> lock(_startMutex);
 		return _startTime;
 	}
 
 	void Timer_Internal::StartTime(const std::chrono::steady_clock::time_point& startTime)
 	{
-		std::lock_guard<std::mutex> lock(_startMutex);
 		_startTime = startTime;
 	}
 
 	const bool Timer_Internal::Over() const
 	{
-		std::lock_guard<std::mutex> lock(_overMutex);
 		return _over;
 	}
 
 	void Timer_Internal::Over(const bool& over)
 	{
-		std::lock_guard<std::mutex> lock(_overMutex);
 		_over = over;
 	}
 

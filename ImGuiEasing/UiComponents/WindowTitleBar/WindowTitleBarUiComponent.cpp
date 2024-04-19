@@ -4,8 +4,8 @@
 namespace ImGuiEasing
 {
 	constexpr char closeWindowButtonName[] = "X";
-	constexpr char restoredWindowButtonName[] = u8"д▒";
-	constexpr char maxWindowButtonName[] = u8"бр";
+	constexpr char restoredWindowButtonName[] = "д▒";
+	constexpr char maxWindowButtonName[] = "бр";
 	constexpr char minWindowButtonName[] = "_";
 
 	void ImGuiEasing::WindowTitleBarUiComponent::Item()
@@ -79,49 +79,41 @@ namespace ImGuiEasing
 
 	void WindowTitleBarUiComponent::Color(const ImVec4& color)
 	{
-		std::lock_guard<std::mutex> lock(_colorMutex);
 		_color = color;
 	}
 
 	const ImVec4 WindowTitleBarUiComponent::Color() const
 	{
-		std::lock_guard<std::mutex> lock(_colorMutex);
 		return _color;
 	}
 
 	void WindowTitleBarUiComponent::UseMinimize(const bool boolan)
 	{
-		std::lock_guard<std::mutex> lock(_useMinimizeMutex);
 		_useMinimize = boolan;
 	}
 
 	const bool WindowTitleBarUiComponent::UseMinimize() const
 	{
-		std::lock_guard<std::mutex> lock(_useMinimizeMutex);
 		return _useMinimize;
 	}
 
 	void WindowTitleBarUiComponent::UseMaximize(const bool boolan)
 	{
-		std::lock_guard<std::mutex> lock(_useMaximizeMutex);
 		_useMaximize = boolan;
 	}
 
 	const bool WindowTitleBarUiComponent::UseMaximize() const
 	{
-		std::lock_guard<std::mutex> lock(_useMaximizeMutex);
 		return _useMaximize;
 	}
 
 	void WindowTitleBarUiComponent::UseClose(const bool boolean)
 	{
-		std::lock_guard<std::mutex> lock(_useCloseMutex);
 		_useClose = boolean;
 	}
 
 	const bool WindowTitleBarUiComponent::UseClose() const
 	{
-		std::lock_guard<std::mutex> lock(_useCloseMutex);
 		return _useClose;
 	}
 
@@ -163,7 +155,7 @@ namespace ImGuiEasing
 		}
 	}
 
-	ImGuiEasing::WindowTitleBarUiComponent::WindowTitleBarUiComponent(std::string name)
+	ImGuiEasing::WindowTitleBarUiComponent::WindowTitleBarUiComponent(const std::string& name)
 		: UiComponentBase(name), 
 		_isFullScreen(false),
 		_color(ImVec4()), _useMinimize(true), _useMaximize(true), _useClose(true),

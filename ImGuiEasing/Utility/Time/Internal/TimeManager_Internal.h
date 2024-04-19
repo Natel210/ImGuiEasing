@@ -39,10 +39,5 @@ namespace ImGuiEasing
 		static std::unordered_map<std::string, std::shared_ptr<TimeCounter>> _timeCounterDic;
 		static std::unordered_map<std::string, std::shared_ptr<Timer>> _timerDic;
 		static std::unordered_map<std::string, std::shared_ptr<TimeTracker>> _timeTrackerDic;
-	private: // mutex
-		static std::mutex _stopWathDicMutex;
-		static std::mutex _timeCounterDicMutex;
-		static std::mutex _timerDicMutex;
-		static std::mutex _timeTrackerDicMutex;
 	};
 }
