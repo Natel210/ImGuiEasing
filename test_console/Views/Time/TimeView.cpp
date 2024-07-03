@@ -1,4 +1,6 @@
 #include "TimeView.h"
+#include <format>
+
 #include "Utility/Time/TimeManager.h"
 #include "Utility/Time/StopWatch.h"
 #include "Utility/Time/TimeCounter.h"
@@ -30,15 +32,16 @@ void TimeItemsView::RenderAfter()
 {
 }
 
-TimeItemsView::TimeItemsView(const std::string& name) : ImGuiEasing::ViewBase(name)
+TimeItemsView::TimeItemsView(const char* name) : ImGuiEasing::ViewBase(name)
 {
 	std::string viewName = Name();
-	auto stopWatch = ImGuiEasing::TimeManager::CreateStopWatch(viewName + "_StopWatch");
+	auto stopWatch = ImGuiEasing::TimeManager::CreateStopWatch(  viewName + "_StopWatch");
 	auto timeCounter = ImGuiEasing::TimeManager::CreateTimeCounter(viewName + "_TimeCounter");
 	auto timer = ImGuiEasing::TimeManager::CreateTimer(viewName + "_Timer");
 	auto timeTracker = ImGuiEasing::TimeManager::CreateTimeTracker(viewName + "_TimeTracker");
 	timeTracker->BufferSize(20);
 	{
+		//std::format("{}")
 		_currentClockUIComponent = std::make_shared<CurrentClockUIComponent>(viewName + "_ClockCom");
 		_currentClockUIComponent->Size(200, 80);
 

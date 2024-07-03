@@ -41,7 +41,7 @@ TestMenuView::TestMenuView(const std::string& titleName, std::shared_ptr<TestMai
 			return;
 		auto view = viewWeakPointer.lock();
 		bool viewShow = view->Show();
-		if (ImGui::MenuItem(view->Name().c_str(), NULL, viewShow))
+		if (ImGui::MenuItem(view->Name(), NULL, viewShow))
 			view->Show(!viewShow);
 	};
 	_viewMenuUiCom->FillMunuItems([&]() {

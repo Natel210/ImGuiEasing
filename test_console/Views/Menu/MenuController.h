@@ -19,7 +19,7 @@ protected:
 	/// <summary> Additional tasks after creating the window </summary>
 	void RenderAfter() override;
 public:
-	MenuController(std::string name);
+	MenuController(const char* name);
 	~MenuController();
 
 };

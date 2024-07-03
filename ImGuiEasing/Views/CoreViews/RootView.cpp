@@ -43,7 +43,8 @@ namespace ImGuiEasing
 	{
 		if (menu == nullptr)
 			return;
-		if (menu->Name().compare("MenuView") != 0)
+		std::string name = menu->Name();
+		if (name.compare("MenuView") != 0)
 			return;
 		_menuView.reset();
 		_menuView = menu;
@@ -53,7 +54,8 @@ namespace ImGuiEasing
 	{
 		if (main == nullptr)
 			return;
-		if (main->Name().compare("MainView") != 0)
+		std::string name = main->Name();
+		if (name.compare("MainView") != 0)
 			return;
 		_mainView.reset();
 		_mainView = main;

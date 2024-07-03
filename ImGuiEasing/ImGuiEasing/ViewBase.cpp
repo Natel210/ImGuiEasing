@@ -2,7 +2,7 @@
 namespace ImGuiEasing
 {
 
-    const std::string ViewBase::Name() const
+    const char* ViewBase::Name() const
     {
         return _name;
     }
@@ -36,7 +36,7 @@ namespace ImGuiEasing
         ImGui::SetNextWindowViewport(viewport->ID);
         SetNextWindowOption();
         ApplyCustomStyle();
-        ImGui::Begin(Name().c_str(), &refShow, WindowFlags());
+        ImGui::Begin(_name, &refShow, WindowFlags());
         Show(refShow);
         UnapplyCustomStyle();
         WindowItem();
@@ -50,7 +50,7 @@ namespace ImGuiEasing
 
     void ViewBase::UnapplyCustomStyle() {}
 
-    ViewBase::ViewBase(const std::string& name)
+    ViewBase::ViewBase(const char* name)
         : _name(name),
         _windowFlags(ImGuiWindowFlags_NoCollapse),
         _show(true)

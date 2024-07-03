@@ -156,10 +156,28 @@ namespace ImGuiEasing
         //    0xFFFD, 0xFFFD, // Invalid
         //    0,
         //};
-        coreFont = imGuiIO.Fonts->AddFontFromFileTTF(
-            "C:\\Users\\UBISAM\\AppData\\Local\\Microsoft\\Windows\\Fonts\\D2Coding.ttf",
-            18.0f, NULL, imGuiIO.Fonts->GetGlyphRangesKorean());
-        imGuiIO.FontDefault = coreFont;
+        //coreFont = imGuiIO.Fonts->AddFontFromFileTTF(
+        //    "C:\\Users\\UBISAM\\AppData\\Local\\Microsoft\\Windows\\Fonts\\D2Coding.ttf",
+        //    18.0f, NULL, imGuiIO.Fonts->GetGlyphRangesKorean());
+        //imGuiIO.FontDefault = coreFont;
+
+        imGuiIO.Fonts->AddFontDefault(); // 기본 폰트 추가
+        //static const ImWchar ranges[] = {
+        //    0x0020, 0x00FF,
+        //    0x1100, 0x11FF,
+        //    0x3130, 0x318F,
+        //    0xAC00, 0xD7AF,
+        //    0xFF00, 0xFFEF,
+        //    0x4E00, 0x9FAF,
+        //    0 }; // 한글과 기본 라틴 문자 범위
+        ImFontConfig config;
+        config.MergeMode = true;
+
+        imGuiIO.Fonts->AddFontFromFileTTF("C:\\Users\\UBISAM\\AppData\\Local\\Microsoft\\Windows\\Fonts\\D2Coding.ttf",
+            12, &config, imGuiIO.Fonts->GetGlyphRangesKorean());
+
+        
+
         // 
         // Our state
 

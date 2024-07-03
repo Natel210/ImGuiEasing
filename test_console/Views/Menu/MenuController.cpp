@@ -16,7 +16,9 @@ void MenuController::UnapplyCustomStyle()
 void MenuController::WindowItem()
 {
 	auto splitCom = ImGuiEasing::ImGuiEasingCore::GetRootView<ImGuiEasing::RootView>()->SplitViewComponent().lock();
-	std::string frameName1 = Name() + "_Frame1";
+	
+	std::string frameName1 = Name();
+	frameName1 += "_Frame1";
 	ImGui::BeginChild(frameName1.c_str(), ImVec2(200.f, 65.0f), ImGuiChildFlags_None, ImGuiWindowFlags_NoBackground);
 	ImGui::SeparatorText("Fold & Open Menu");
 	ImGui::BeginChild("TimeTracker", ImVec2(200.f, 36.f), ImGuiChildFlags_Border);
@@ -28,7 +30,8 @@ void MenuController::WindowItem()
 	ImGui::EndChild();
 	ImGui::EndChild();
 
-	std::string frameName2 = Name() + "_Frame2";
+	std::string frameName2 = Name();
+	frameName2 += "_Frame2";
 	ImGui::BeginChild(frameName2.c_str(), ImVec2(200.f, 83.0f), ImGuiChildFlags_None, ImGuiWindowFlags_NoBackground);
 	ImGui::SeparatorText("Menu Dock Dir Move");
 	ImGui::BeginChild("MenuDockDirMove", ImVec2(200.f, 60.f), ImGuiChildFlags_Border);
@@ -45,7 +48,8 @@ void MenuController::WindowItem()
 	ImGui::EndChild();
 	ImGui::EndChild();
 
-	std::string frameName3 = Name() + "_Frame3";
+	std::string frameName3 = Name();
+	frameName3 += "_Frame3";
 	ImGui::BeginChild(frameName3.c_str(), ImVec2(200.f, 118.0f), ImGuiChildFlags_None, ImGuiWindowFlags_NoBackground);
 	ImGui::SeparatorText("Separator Items");
 	ImGui::BeginChild("SeparatorItems", ImVec2(200.f, 95.f), ImGuiChildFlags_Border);
@@ -69,7 +73,7 @@ void MenuController::RenderAfter()
 {
 }
 
-MenuController::MenuController(std::string name) : ImGuiEasing::ViewBase(name)
+MenuController::MenuController(const char* name) : ImGuiEasing::ViewBase(name)
 {
 }
 

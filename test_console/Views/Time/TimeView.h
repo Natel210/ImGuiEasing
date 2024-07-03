@@ -25,7 +25,7 @@ protected:
 	/// <summary> Additional tasks after creating the window </summary>
 	void RenderAfter() override;
 public:
-	TimeItemsView(const std::string& name);
+	TimeItemsView(const char* name);
 	virtual ~TimeItemsView() = default;
 private:
 	std::shared_ptr<CurrentClockUIComponent> _currentClockUIComponent;

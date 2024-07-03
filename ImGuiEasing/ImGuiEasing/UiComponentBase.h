@@ -30,7 +30,7 @@ namespace ImGuiEasing
 		/// Child windows are configured. Please fill in the information inside. <para/> </summary>
 		virtual void Item() = 0;
 	public:
-		UiComponentBase(const std::string& name);
+		UiComponentBase(std::string name);
 		virtual ~UiComponentBase() = default;
 	private:
 		std::string _name = "";

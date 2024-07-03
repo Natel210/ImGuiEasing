@@ -12,7 +12,7 @@ void TestMainView::WindowItem()
 
 void TestMainView::RenderAfter()
 {
-	ImGui::Begin("test1테스트");
+	ImGui::Begin(reinterpret_cast < const char*>(u8"안녕하세요?테스트"));
 	static char buf[21];
 	//if (ImGui::InputText("##TimeCounterInputText", buf,
 	//	sizeof(char) * 20))

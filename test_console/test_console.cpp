@@ -17,7 +17,7 @@ int main(int, char**)
 
     std::shared_ptr<ImGuiEasing::RootView> testRoot = std::make_shared<ImGuiEasing::RootView>();
     std::shared_ptr<TestMainView> testMain = std::make_shared<TestMainView>();
-    //std::shared_ptr<TestMenuView> testMenu = std::make_shared<TestMenuView>("TEST", testMain);
+    std::shared_ptr<TestMenuView> testMenu = std::make_shared<TestMenuView>("TEST", testMain);
     
     //testRoot->MenuView(testMenu);
     testRoot->MainView(testMain);

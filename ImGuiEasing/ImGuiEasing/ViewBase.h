@@ -10,7 +10,7 @@ namespace ImGuiEasing
 	class IMGUIEASING_API ViewBase
 	{
 	public:
-		_NODISCARD virtual const std::string Name() const final;
+		_NODISCARD virtual const char* Name() const final;
 		_NODISCARD virtual ImGuiWindowFlags WindowFlags() const final;
 		virtual void WindowFlags(const ImGuiWindowFlags& windowFlags) final;
 		_NODISCARD virtual const bool Show() const final;
@@ -33,10 +33,10 @@ namespace ImGuiEasing
 		/// <summary> Additional tasks after creating the window </summary>
 		virtual void RenderAfter() = 0;
 	public:
-		ViewBase(const std::string& name);
+		ViewBase(const char* name);
 		virtual ~ViewBase() = default;
 	private:
-		const std::string _name;
+		const char* _name;
 		ImGuiWindowFlags _windowFlags = ImGuiWindowFlags_NoCollapse;
 		bool _show = true;
 	};
